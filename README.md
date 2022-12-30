@@ -21,11 +21,11 @@ const discordWebhook = ""
    **請注意token包含分號;，須一併複製**
    ```javascript
    function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-  console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
+   const value = `; ${document.cookie}`;
+   const parts = value.split(`; ${name}=`);
+   if (parts.length === 2) return parts.pop().split(';').shift();
+   }
+   console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
    ```
 
 2. 請填入自己的 Discord ID
