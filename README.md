@@ -31,5 +31,5 @@ const discordWebhook = ""
 2. **請填入自己的 Discord ID**  
    Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號"即可
    
-3. **請填入藥發送通知的伺服器頻道之 Discord Webhook**  
-   Discord Webhook 連結建立請參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號"即可
+3. **請填入發送通知的伺服器頻道之 Discord Webhook**  
+   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號"即可
