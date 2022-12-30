@@ -1,0 +1,1 @@
+# hoyolab-genshin-auto-sign
