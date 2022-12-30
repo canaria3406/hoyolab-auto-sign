@@ -1,11 +1,12 @@
 # hoyolab-genshin-auto-sign
-hoyolab自動簽到script，每月約可自動領取60原石，堪比蚊子腿
+hoyolab自動簽到script，每月約可自動領取60原石，堪比蚊子腿  
+使用Google App Script及Discord Webhook搭建
 
 ## 特色
 * **簡單** - 僅需少量的設定即可運作，程式碼僅約60行
 * **安全** - 自行部屬至Google，不必擔心資料外洩的問題
 * **免費** - Google App Script目前是免費使用的佛心服務
-* **輕巧** - 無須電腦瀏覽器即可自動幫你簽到，並由Discord自動通知
+* **輕巧** - 無須電腦瀏覽器即可自動幫你簽到，並由Discord Webhook自動通知
 
 ## Demo
 
