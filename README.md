@@ -50,3 +50,8 @@ const discordWebhook = ""
    
 3. **請填入發送通知的伺服器頻道之 Discord Webhook**  
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號"即可
+
+## TODO
+也許會做自動補簽功能  
+也許會做通知每日收到的獎勵  
+也許會更新blog  
