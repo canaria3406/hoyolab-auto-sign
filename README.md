@@ -6,6 +6,22 @@
 * **免費** - Google App Script目前是免費使用的佛心服務
 * **輕巧** - 不用開著電腦瀏覽器即可自動幫你簽到，並由Discord自動通知
 
+## Demo
+
+若自動簽到完成，則傳送 OK
+若今天已簽到過，則傳送 旅行者，你已經簽到過了~
+![image](https://github.com/canaria3406/hoyolab-genshin-auto-sign/blob/main/01.png)
+
+## 配置
+
+1. 進入[Google App Script](https://script.google.com/home/start)，新增專案
+2. 選擇編輯器，貼上[程式碼](https://github.com/canaria3406/hoyolab-genshin-auto-sign/blob/main/src/main.gs)，並參考下述說明配置config檔，完成後儲存
+3. 選擇觸發條件，新增觸發條件
+   選擇您要執行的功能: main
+   選取活動來源: 時間驅動
+   選取時間型觸發條件類型: 日計時器
+   選取時段: 自行選擇，建議選擇1000~1600之離峰任意時段
+
 ## config檔設定
 
 ```javascript
