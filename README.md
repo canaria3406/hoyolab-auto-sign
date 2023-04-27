@@ -38,8 +38,6 @@ const myDiscordName = "使用者名稱"
 const discordWebhook = ""
 ```
 
-由上到下依序為hoyolab簽到token、Discord ID、Discord Webhook連結
-
 1. **token** - 請填入hoyolab簽到頁面的token
 
    進入[hoyolab簽到頁面](https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481)後，按F12進入console，  
