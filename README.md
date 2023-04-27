@@ -86,6 +86,6 @@ const discordWebhook = ""
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
 
 ## Change Log
-2022-12-30 專案公開
+2022-12-30 專案公開  
 2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
 2023-04-27 新增 Discord 通知開關
