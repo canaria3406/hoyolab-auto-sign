@@ -1,5 +1,6 @@
 # hoyolab-auto-sign
-hoyolab自動簽到script，支援原神、星穹鐵道、崩壞3。每月約可自動領取60石，堪比蚊子腿。
+hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  
+支援 原神、崩壞：星穹鐵道、崩壞3rd。
 
 ## 特色
 * **簡單** - 僅需少量的設定即可運作，程式碼僅90行
@@ -54,20 +55,17 @@ const discordWebhook = ""
 
 2. **genshin**
 
-   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
-   
+   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false。
 
 3. **honkai_star_rail**
 
-   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
-   
+   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
 
 4. **honkai_3**
 
-   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
-   
+   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
 
 5. **discord_notify**
@@ -76,8 +74,7 @@ const discordWebhook = ""
 
 6. **myDiscordID** - 請填入自己的 Discord ID
 
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可
-   
+   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可  
    若您不希望被tag，請讓"括號內"保持空白。
    
 7. **myDiscordName** - 請填入您自訂的 Discord 名稱
@@ -89,6 +86,6 @@ const discordWebhook = ""
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
 
 ## Change Log
-2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援
-
+2022-12-30 專案公開
+2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
 2023-04-27 新增 Discord 通知開關
