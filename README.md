@@ -13,9 +13,9 @@ hoyolab自動簽到script，支援原神、星穹鐵道、崩壞3。每月約可
 ![image](https://github.com/canaria3406/hoyolab-genshin-auto-sign/blob/main/01.png)
 
 ## 配置
-1. 進入[Google App Script](https://script.google.com/home/start)，新增專案
+1. 進入[Google App Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
 2. 選擇編輯器，貼上[程式碼](https://github.com/canaria3406/hoyolab-genshin-auto-sign/blob/main/src/main.gs)，並參考下述說明配置config檔，完成後儲存
-3. 若需確認配置是否正確，可點選專案頁面上方的[**執行**]，進行確認。
+3. 若需確認配置是否正確，可選擇main，並點選專案頁面上方的[**執行**]，進行確認。
 4. 選擇觸發條件，新增觸發條件  
    選擇您要執行的功能: main  
    選取活動來源: 時間驅動  
@@ -55,14 +55,20 @@ const discordWebhook = ""
 2. **genshin**
 
    是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
+   
+   若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false。
 
 3. **honkai_star_rail**
 
    是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
+   
+   若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
 
 4. **honkai_3**
 
    是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。
+   
+   若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
 
 5. **discord_notify**
 
