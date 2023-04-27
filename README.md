@@ -1,8 +1,8 @@
-# hoyolab-genshin-auto-sign
+# hoyolab-auto-sign
 hoyolab自動簽到script，每月約可自動領取60原石，堪比蚊子腿  
 
 ## 特色
-* **簡單** - 僅需少量的設定即可運作，程式碼僅約60行
+* **簡單** - 僅需少量的設定即可運作，程式碼僅90行
 * **安全** - 自行部屬至Google App Script，不必擔心資料外洩的問題
 * **免費** - Google App Script目前是免費使用的佛心服務
 * **輕巧** - 無須電腦瀏覽器即可自動幫你簽到，並由Discord Webhook自動通知
@@ -51,7 +51,6 @@ const discordWebhook = ""
 3. **請填入發送通知的伺服器頻道之 Discord Webhook**  
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號"即可
 
-## TODO
-也許會做自動補簽功能  
-也許會做通知每日收到的獎勵  
-也許會更新blog  
+## Change Log
+2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援
+2023-04-27 新增 Discord 通知開關
