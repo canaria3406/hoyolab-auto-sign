@@ -17,20 +17,9 @@ function main(){
   let hoyolabResp = autoSignFunction();
 
   if(discord_notify == true){
-
-    let discordPostData = "";
-
-    if(myDiscordID){
-      discordPostData += "<@" + myDiscordID + ">, " +　hoyolabResp;
-    }
-    else{
-      discordPostData += myDiscordName + ", " +　hoyolabResp;
-    }
-
     if(discordWebhook){
-      postWebhook(discordPostData);
+      postWebhook(hoyolabResp);
     }
-
   }
 
 }
@@ -52,6 +41,13 @@ function autoSignFunction() {
   };
 
   let response = "";
+
+  if(myDiscordID){
+    response += "<@" + myDiscordID + ">, ";
+  }
+  else{
+    response += myDiscordName + ", ";
+  }
 
   if(genshin == true){
     let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
