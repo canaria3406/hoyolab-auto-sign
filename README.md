@@ -83,6 +83,13 @@ const discordWebhook = ""
 
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
 
+## Example 
+進行 崩壞3rd 簽到、進行 Discord 通知、不進行 Discord tag  
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/02.png)
+
+進行 原神、崩壞：星穹鐵道 簽到、進行 Discord 通知、進行 Discord tag  
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/03.png)
+
 ## Change Log
 2022-12-30 專案公開  
 2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
