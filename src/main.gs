@@ -12,12 +12,12 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 /** 以上為設定檔，請參考 https://github.com/canaria3406/hoyolab-auto-sign 之說明進行設定**/
 /** 以下為程式碼，請勿更動 **/
 
-function main(){
+function main() {
 
   let hoyolabResp = autoSignFunction();
 
-  if(discord_notify == true){
-    if(discordWebhook){
+  if(discord_notify == true) {
+    if(discordWebhook) {
       postWebhook(hoyolabResp);
     }
   }
@@ -42,24 +42,24 @@ function autoSignFunction() {
 
   let response = "";
 
-  if(myDiscordID){
+  if(myDiscordID) {
     response += "<@" + myDiscordID + ">, ";
   }
-  else{
+  else {
     response += myDiscordName + ", ";
   }
 
-  if(genshin == true){
+  if(genshin == true) {
     let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
     response += "\n" + JSON.parse(hoyolabResponse_gs).message;
   }
 
-  if(honkai_star_rail == true){
+  if(honkai_star_rail == true) {
     let hoyolabResponse_hsr = UrlFetchApp.fetch(signurl_hsr,options);
     response += "\n" + JSON.parse(hoyolabResponse_hsr).message;
   }
 
-  if(honkai_3 == true){
+  if(honkai_3 == true) {
     let hoyolabResponse_bh3 = UrlFetchApp.fetch(signurl_bh3,options);
     response += "\n" + JSON.parse(hoyolabResponse_bh3).message;
   }
