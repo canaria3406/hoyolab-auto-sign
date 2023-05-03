@@ -4,9 +4,9 @@
 </h1>
 
 <p align="center">
-    <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a><br>
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
 </p>
 
 hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  

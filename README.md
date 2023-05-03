@@ -4,12 +4,12 @@
 </h1>
 
 <p align="center">
-    <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a><br>
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
 </p>
 
-A lightweight, secure, and free script that automatically signs in to Hoyolab, allowing users to collect daily login rewards.  
+A lightweight, secure, and free script that automatically collect daily login rewards.  
 Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
 
 ## Features
