@@ -1,29 +1,39 @@
-# hoyolab-auto-sign
-hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  
-支援 原神、崩壞：星穹鐵道、崩壞3rd。
+<h1 align="center">
+    <img width="120" height="120" src="pic/logo.svg" alt=""><br>
+    hoyolab-auto-sign
+</h1>
 
-## 特色
-* **簡單** - 僅需少量的設定即可運作，程式碼僅90行
-* **安全** - 自行部屬至Google App Script，不必擔心資料外洩的問題
-* **免費** - Google App Script目前是免費使用的佛心服務
-* **輕巧** - 無須電腦瀏覽器即可自動幫你簽到，並由Discord Webhook自動通知
+<p align="center">
+    [繁體中文](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md)．[English](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md)
+    <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
+</p>
+
+A lightweight, secure, and free script that automatically signs in to Hoyolab, allowing users to collect daily login rewards.  
+Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
+
+## Features
+* **Simple** - The script only requires minimal configuration and is only 90 lines of code.
+* **Secure** - The script can be self-deployed to Google App Script, no worries about data leaks.
+* **Free** - Google App Script is currently a free service.
+* **Lightweight** - The script can run without a browser and will automatically notify you through Discord Webhook.
 
 ## Demo
-若自動簽到完成，則傳送 OK  
-若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/01.png)
+If the auto-sign process is success, it will send "OK".  
+If you have already signed in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
-## 配置
-1. 進入[Google App Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
-2. 選擇編輯器，貼上[程式碼](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs)，並參考下述說明配置config檔，完成後儲存。
-3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
-4. 在左側選擇觸發條件，新增觸發條件  
-   選擇您要執行的功能: main  
-   選取活動來源: 時間驅動  
-   選取時間型觸發條件類型: 日計時器  
-   選取時段: 自行選擇，建議選擇0900~1500之離峰任意時段
+## Setup
+1. Go to [Google App Script](https://script.google.com/home/start) and create a new project with your custom name.
+2. Select the editor and [paste the code](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs). Refer to the instructions below to configure the config file and save it.
+3. Select "main" and click the "Run" button at the top. Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
+4. Click the trigger button on the left side and add a new trigger.
+   Select the function to run: main
+   Select the event source: Time-driven
+   Select the type of time based trigger: Day timer
+   Select the time of day: recommended to choose any off-peak time between 0900 to 1500.
 
-## config檔設定
+## Configuration
 
 ```javascript
 const token = ""
@@ -34,14 +44,14 @@ const honkai_3 = false
 
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "使用者名稱"
+const myDiscordName = "YOUR NICKNAME"
 const discordWebhook = ""
 ```
 
-1. **token** - 請填入hoyolab簽到頁面的token
+1. **token** - Please enter the token for hoyolab check-in page.
 
-   進入[hoyolab簽到頁面](https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481)後，按F12進入console，  
-   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
+   After entering the hoyolab check-in page, press F12 to enter the console.  
+   Paste the following code and run it to get the token. Copy the token and fill it in "quotes".
    ```javascript
    function getCookie(name) {
    const value = `; ${document.cookie}`;
@@ -53,44 +63,49 @@ const discordWebhook = ""
 
 2. **genshin**
 
-   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false。
+   Whether to enable auto-sign for Genshin Impact.  
+   If you want, set it to true. If not, please set it to false.  
+   If you do not play Genshin Impact, or your account is not bound to a uid, please set it to false.
 
 3. **honkai_star_rail**
 
-   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
+   Whether to enable auto-sign for Honkai: Star Rail.  
+   If you want, set it to true. If not, please set it to false.  
+   If you do not play Honkai: Star Rail, or your account is not bound to a uid, please set it to false.
 
 4. **honkai_3**
 
-   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
+   Whether to enable auto-sign for Honkai Impact 3rd.  
+   If you want, set it to true. If not, please set it to false.  
+   If you do not play Honkai Impact 3rd, or your account is not bound to a uid, please set it to false.
 
 5. **discord_notify**
 
-   是否要進行Discord的自動簽到通知。若要進行自動簽到通知則為true，若不要請填入false。
+   Whether to enable Discord notify.  
+   If you want to enable auto-sign notify, set it to true. If not, please set it to false.
 
-6. **myDiscordID** - 請填入自己的 Discord ID
+6. **myDiscordID** - Please enter your Discord user ID.
 
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可  
-   若您不希望被tag，請讓"括號內"保持空白。
-   
-7. **myDiscordName** - 請填入您自訂的 Discord 名稱
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID. Copy your Discord user ID and fill it in "quotes".
+   If you don't want to be tagged, leave the "quotes" empty.
 
-   若您讓myDiscordID的"括號內"保持空白，請填入自訂的Discord名稱。
-   
-8. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
+7. **myDiscordName** - Please enter your customized nickname.
 
-   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
+   If you leave the myDiscordID "quotes" empty, please enter your customized Discord name here.
 
-## Example 
-進行 崩壞3rd 簽到、進行 Discord 通知、不進行 Discord tag  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/02.png)
+8. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
 
-進行 原神、崩壞：星穹鐵道 簽到、進行 Discord 通知、進行 Discord tag  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/03.png)
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/228383668) to create a Discord webhook.
+   Copy the webhook URL and paste it in "quotes".
+
+## Example
+Enable Honkai Impact 3rd auto-sign, enable Discord notify, do not tag in Discord.
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/02.png)
+
+Enable Genshin Impact and Honkai: Star Rail auto-sign, enable Discord notify, tag in Discord.
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/03.png)
 
 ## Change Log
-2022-12-30 專案公開  
-2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
-2023-04-27 新增 Discord 通知開關
+2022-12-30 Project launched.  
+2023-04-27 Add support for Honkai Impact 3rd, and Honkai: Star Rail.  
+2023-04-27 Add switch for Discord notify.  
