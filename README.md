@@ -50,7 +50,7 @@ const discordWebhook = ""
 
 1. **token** - Please enter the token for hoyolab check-in page.
 
-   After entering the hoyolab check-in page, press F12 to enter the console.  
+   After entering the [hoyolab check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
    Paste the following code and run it to get the token. Copy the token and fill it in "quotes".
    ```javascript
    function getCookie(name) {

@@ -50,7 +50,7 @@ const discordWebhook = ""
 
 1. **token** - 請填入hoyolab簽到頁面的token
 
-   進入[hoyolab簽到頁面](https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481)後，按F12進入console，  
+   進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
    貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
    ```javascript
    function getCookie(name) {
