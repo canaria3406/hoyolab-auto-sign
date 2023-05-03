@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-    [繁體中文](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md)．[English](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md)
+    <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a><br>
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
 </p>
