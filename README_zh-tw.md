@@ -25,7 +25,7 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ## 配置
 1. 進入[Google App Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
-2. 選擇編輯器，貼上[程式碼](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs)，並參考下述說明配置config檔，完成後儲存。
+2. 選擇編輯器，貼上[程式碼](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main_zh-tw.gs)，並參考下述說明配置config檔，完成後儲存。
 3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
 4. 在左側選擇觸發條件，新增觸發條件  
    選擇您要執行的功能: main  
