@@ -26,11 +26,12 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 ## Setup
 1. Go to [Google App Script](https://script.google.com/home/start) and create a new project with your custom name.
 2. Select the editor and [paste the code](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs). Refer to the instructions below to configure the config file and save it.
-3. Select "main" and click the "Run" button at the top. Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
-4. Click the trigger button on the left side and add a new trigger.
-   Select the function to run: main
-   Select the event source: Time-driven
-   Select the type of time based trigger: Day timer
+3. Select "main" and click the "Run" button at the top.  
+   Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
+4. Click the trigger button on the left side and add a new trigger.  
+   Select the function to run: main  
+   Select the event source: Time-driven  
+   Select the type of time based trigger: Day timer  
    Select the time of day: recommended to choose any off-peak time between 0900 to 1500.
 
 ## Configuration
@@ -86,7 +87,8 @@ const discordWebhook = ""
 
 6. **myDiscordID** - Please enter your Discord user ID.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID. Copy your Discord user ID and fill it in "quotes".
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
+   Copy your Discord user ID and fill it in "quotes".  
    If you don't want to be tagged, leave the "quotes" empty.
 
 7. **myDiscordName** - Please enter your customized nickname.
@@ -95,7 +97,7 @@ const discordWebhook = ""
 
 8. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/228383668) to create a Discord webhook.
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/228383668) to create a Discord webhook.  
    Copy the webhook URL and paste it in "quotes".
 
 ## Example
