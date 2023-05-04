@@ -6,11 +6,11 @@ const honkai_3 = false
 
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "使用者名稱"
+const myDiscordName = "YOUR NICKNAME"
 const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 
-/** 以上為設定檔，請參考 https://github.com/canaria3406/hoyolab-auto-sign 之說明進行設定**/
-/** 以下為程式碼，請勿更動 **/
+/** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign for configuration. **/
+/** The following is the script code. Please DO NOT modify. **/
 
 function main() {
 
@@ -26,9 +26,9 @@ function main() {
 
 function autoSignFunction() {
 
-  const signurl_gs = "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481"
-  const signurl_hsr = "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311"
-  const signurl_bh3 = "https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111"
+  const signurl_gs = "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481"
+  const signurl_hsr = "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311"
+  const signurl_bh3 = "https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111"
 
   const header = {
     Cookie: token
@@ -70,8 +70,8 @@ function autoSignFunction() {
 function postWebhook(data) {
 
   let payload = JSON.stringify({
-    "username": "自動簽到",
-    "avatar_url": "https://i.imgur.com/L7yYQN7.png",
+    "username": "auto-sign",
+    "avatar_url": "https://i.imgur.com/LI1D4hP.png",
     "content": data
   });
 
