@@ -16,10 +16,8 @@ function main(){
   let hoyolabResp = autoSignFunction();
 
   if(telegram_notify == true){
-    if(telegramBotToken){
-      if(myTelegramID){
-        postWebhook(hoyolabResp);
-      }
+    if(telegramBotToken && myTelegramID){
+      postWebhook(hoyolabResp);
     }
   }
 
