@@ -58,7 +58,14 @@ const discordWebhook = ""
    const parts = value.split(`; ${name}=`);
    if (parts.length === 2) return parts.pop().split(';').shift();
    }
-   console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
+   let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';'
+   let ask = confirm(token + '\n\n按確定即可取得token');
+   if (ask == true) {
+   copy(token);
+   msg = token;
+   } else {
+   msg = 'Cancel';
+   }
    ```
 
 2. **genshin**
