@@ -16,7 +16,7 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 * **輕巧** - 僅需少量的設定即可運作，程式碼僅90行
 * **安全** - 自行部屬至Google App Script，不必擔心資料外洩的問題
 * **免費** - Google App Script目前是免費使用的佛心服務
-* **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由Discord Webhook自動通知
+* **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
 
 ## Demo
 若自動簽到完成，則傳送 OK  
@@ -25,7 +25,7 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ## 配置
 1. 進入[Google App Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
-2. 選擇編輯器，貼上程式碼([Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs))，並參考下述說明配置config檔，完成後儲存。
+2. 選擇編輯器，貼上程式碼( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，並參考下述說明配置config檔，完成後儲存。
 3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
 4. 在左側選擇觸發條件，新增觸發條件  
    選擇您要執行的功能: main  
@@ -41,12 +41,10 @@ const token = ""
 const genshin = true
 const honkai_star_rail = true
 const honkai_3 = false
-
-const discord_notify = true
-const myDiscordID = ""
-const myDiscordName = "使用者名稱"
-const discordWebhook = ""
 ```
+
+<details>
+<summary><b>token 設定</b></summary>
 
 1. **token** - 請填入hoyolab簽到頁面的token
 
@@ -54,19 +52,24 @@ const discordWebhook = ""
    貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
    ```javascript
    function getCookie(name) {
-   const value = `; ${document.cookie}`;
-   const parts = value.split(`; ${name}=`);
-   if (parts.length === 2) return parts.pop().split(';').shift();
+     const value = `; ${document.cookie}`;
+     const parts = value.split(`; ${name}=`);
+     if (parts.length === 2) return parts.pop().split(';').shift();
    }
    let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';'
    let ask = confirm(token + '\n\n按確定即可取得token');
    if (ask == true) {
-   copy(token);
-   msg = token;
+     copy(token);
+     msg = token;
    } else {
-   msg = 'Cancel';
+     msg = 'Cancel';
    }
    ```
+
+</details>
+
+<details>
+<summary><b>自動簽到遊戲設定</b></summary>
 
 2. **genshin**
 
@@ -83,22 +86,61 @@ const discordWebhook = ""
    是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
 
-5. **discord_notify**
+</details>
+
+```javascript
+const discord_notify = true
+const myDiscordID = ""
+const myDiscordName = "YOUR NICKNAME"
+const discordWebhook = ""
+```
+
+<details>
+<summary><b>discord 通知設定 (適用於 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs">Discord版</a>)</b></summary>
+
+1. **discord_notify**
 
    是否要進行Discord的自動簽到通知。若要進行自動簽到通知則為true，若不要請填入false。
 
-6. **myDiscordID** - 請填入自己的 Discord ID
+2. **myDiscordID** - 請填入自己的 Discord ID
 
    Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可  
    若您不希望被tag，請讓"括號內"保持空白。
    
-7. **myDiscordName** - 請填入您自訂的 Discord 名稱
+3. **myDiscordName** - 請填入您自訂的 Discord 名稱
 
    若您讓myDiscordID的"括號內"保持空白，請填入自訂的Discord名稱。
    
-8. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
+4. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
 
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
+
+</details>
+
+```javascript
+const telegram_notify = true
+const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
+const myTelegramID = "1XXXXXXX0"
+```
+
+<details>
+<summary><b>telegram 通知設定 (適用於 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs">Telegram版</a>)</b></summary>
+
+1. **telegram_notify**
+
+   是否要進行Telegram的自動簽到通知。若要進行自動簽到通知則為true，若不要請填入false。
+
+2. **telegramBotToken** - 請填入您的 Telegram Bot Token.
+
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
+   Copy your Discord user ID and fill it in "quotes".  
+
+3. **myTelegramID** - 請填入您的 Telegram ID.
+
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
+   Copy your Discord user ID and fill it in "quotes".  
+
+</details>
 
 ## Example 
 進行 崩壞3rd 簽到、進行 Discord 通知、不進行 Discord tag  
@@ -107,7 +149,8 @@ const discordWebhook = ""
 進行 原神、崩壞：星穹鐵道 簽到、進行 Discord 通知、進行 Discord tag  
 ![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/03.png)
 
-## Change Log
+## Changelog
 2022-12-30 專案公開  
 2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
 2023-04-27 新增 Discord 通知開關
+2023-05-28 新增 Telegram 通知版本
