@@ -36,20 +36,22 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 ## config檔設定
 
 ```javascript
-const token = ""
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "你的名子" }
+];
 ```
 
 <details>
-<summary><b>token 設定</b></summary>
+<summary><b>hoyolab 設定</b></summary>
 
 1. **token** - 請填入hoyolab簽到頁面的token
 
    進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
-   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**。
+   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
    ```javascript
    function getCookie(name) {
      const value = `; ${document.cookie}`;
@@ -66,11 +68,6 @@ const honkai_3 = false
    }
    ```
 
-</details>
-
-<details>
-<summary><b>自動簽到遊戲設定</b></summary>
-
 2. **genshin**
 
    是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
@@ -86,6 +83,10 @@ const honkai_3 = false
    是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
 
+5. **accountName** - 請輸入你的暱稱
+
+   請輸入你的Discord暱稱或遊戲暱稱，供通知使用。
+
 </details>
 
 <details>
@@ -94,8 +95,7 @@ const honkai_3 = false
 ```javascript
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "使用者名稱"
-const discordWebhook = ""
+const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 ```
 
 1. **discord_notify**
@@ -107,11 +107,7 @@ const discordWebhook = ""
    Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可。  
    若您不希望被tag，請讓"括號內"保持空白。
    
-3. **myDiscordName** - 請填入您自訂的 Discord 名稱
-
-   若您讓myDiscordID的"括號內"保持空白，請填入自訂的Discord名稱。
-   
-4. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
+3. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
 
    Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可。
 
@@ -122,24 +118,24 @@ const discordWebhook = ""
 
 ```javascript
 const telegram_notify = true
-const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 const myTelegramID = "1XXXXXXX0"
+const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 ```
 
 1. **telegram_notify**
 
    是否要進行Telegram的自動簽到通知。若要進行自動簽到通知則為true，若不要請填入false。
 
-2. **telegramBotToken** - 請填入您的 Telegram Bot Token.
+2. **myTelegramID** - 請填入您的 Telegram ID.
+
+   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，複製ID並填入"括號內"即可。
+
+3. **telegramBotToken** - 請填入您的 Telegram Bot Token.
 
    向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。  
    當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。  
    複製Token並填入"括號內"即可。  
    你可以參考[此篇文章](https://core.telegram.org/bots/features#botfather)以獲得更詳細的說明。
-
-3. **myTelegramID** - 請填入您的 Telegram ID.
-
-   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，複製ID並填入"括號內"即可。
 
 </details>
 

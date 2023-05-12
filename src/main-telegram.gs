@@ -1,33 +1,46 @@
-const token = "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;"
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "YOUR NICKNAME" }
+];
 
 const telegram_notify = true
-const telegramBotToken = ""
 const myTelegramID = "1XXXXXXX0"
+const telegramBotToken = ""
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign/ for configuration. **/
 /** The following is the script code. Please DO NOT modify. **/
 
+const urlDict = {
+  Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481',
+  Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311',
+  Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
+}
+
 function main(){
 
-  let hoyolabResp = autoSignFunction();
+  let hoyolabResp = ''
+  profiles.forEach(profile => {
+    hoyolabResp += autoSignFunction(profile) + '\n\n';
+  });
 
-  if(telegram_notify == true) {
-    if(telegramBotToken && myTelegramID) {
+  if(telegram_notify == true){
+    if(telegramBotToken && myTelegramID){
       postWebhook(hoyolabResp);
     }
   }
 
 }
 
-function autoSignFunction() {
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
 
-  const signurl_gs = 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481'
-  const signurl_hsr = 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311'
-  const signurl_bh3 = 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
+  const urls = [];
+
+  if (genshin) urls.push(urlDict.Genshin);
+  if (honkai_star_rail) urls.push(urlDict.Star_Rail);
+  if (honkai_3) urls.push(urlDict.Honkai_3);
 
   const header = {
     Cookie: token
@@ -39,22 +52,14 @@ function autoSignFunction() {
     muteHttpExceptions: true,
   };
 
-  let response = '';
+  let response = `Check-in completed for ${accountName}`;
 
-  if(genshin == true) {
-    let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
-    response += JSON.parse(hoyolabResponse_gs).message + '\n';
-  }
-
-  if(honkai_star_rail == true) {
-    let hoyolabResponse_hsr = UrlFetchApp.fetch(signurl_hsr,options);
-    response += JSON.parse(hoyolabResponse_hsr).message + '\n';
-  }
-
-  if(honkai_3 == true) {
-    let hoyolabResponse_bh3 = UrlFetchApp.fetch(signurl_bh3,options);
-    response += JSON.parse(hoyolabResponse_bh3).message + '\n';
-  }
+  urls.forEach(url => {
+    let hoyolabResponse = UrlFetchApp.fetch(url,options);
+    const checkInResult = JSON.parse(hoyolabResponse).message;
+    const gameName = Object.keys(urlDict).find(key => urlDict[key] === url)?.replace(/_/g, ' ');
+    response += `\n${gameName}: ${checkInResult}`;
+  });
 
   return response;
 }

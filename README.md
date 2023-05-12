@@ -37,15 +37,17 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 ## Configuration
 
 ```javascript
-const token = ""
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "YOUR NICKNAME" }
+];
 ```
 
 <details>
-<summary><b>token settings</b></summary>
+<summary><b>hoyolab settings</b></summary>
 
 1. **token** - Please enter the token for hoyolab check-in page.
 
@@ -67,11 +69,6 @@ const honkai_3 = false
    }
    ```
 
-</details>
-
-<details>
-<summary><b>auto-signed game settings</b></summary>
-
 2. **genshin**
 
    Whether to enable auto check in for Genshin Impact.  
@@ -90,6 +87,10 @@ const honkai_3 = false
    If you want, set it to true. If not, please set it to false.  
    If you do not play Honkai Impact 3rd, or your account is not bound to a uid, please set it to false.
 
+5. **accountName** - Please enter your customized nickname.
+
+   Please enter your customized Discord or in-game nickname here.
+
 </details>
 
 <details>
@@ -98,8 +99,7 @@ const honkai_3 = false
 ```javascript
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "YOUR NICKNAME"
-const discordWebhook = ""
+const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 ```
 
 1. **discord_notify**
@@ -113,11 +113,7 @@ const discordWebhook = ""
    Copy your Discord user ID and fill it in "quotes".  
    If you don't want to be tagged, leave the "quotes" empty.
 
-3. **myDiscordName** - Please enter your customized nickname.
-
-   If you leave the myDiscordID "quotes" empty, please enter your customized Discord name here.
-
-4. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
+3. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
 
    You can refer to [this article](https://support.discord.com/hc/en-us/articles/228383668) to create a Discord webhook.  
    Copy the webhook URL and paste it in "quotes".
@@ -129,8 +125,8 @@ const discordWebhook = ""
 
 ```javascript
 const telegram_notify = true
-const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 const myTelegramID = "1XXXXXXX0"
+const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 ```
 
 1. **telegram_notify**
@@ -138,16 +134,16 @@ const myTelegramID = "1XXXXXXX0"
    Whether to enable Telegram notify.  
    If you want to enable auto check in notify, set it to true. If not, please set it to false.
 
-2. **telegramBotToken** - Please enter your Telegram Bot Token.
+2. **myTelegramID** - Please enter your Telegram ID.
+
+   Use the `/getid` command to find your Telegram user ID by messaging [@IDBot](https://t.me/myidbot). 
+
+3. **telegramBotToken** - Please enter your Telegram Bot Token.
 
    Use the `/newbot` command to create a new bot on Telegram by messaging [@BotFather](https://t.me/botfather).  
    Once you have finished creating the bot, you will receive your Telegram Bot Token, which like `110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`.  
    Copy your Telegram Bot Token and fill it in "quotes".  
-   For more detailed instructions, you can refer to [this article](https://core.telegram.org/bots/features#botfather).
-
-3. **myTelegramID** - Please enter your Telegram ID.
-
-   Use the `/getid` command to find your Telegram user ID by messaging [@IDBot](https://t.me/myidbot).  
+   For more detailed instructions, you can refer to [this article](https://core.telegram.org/bots/features#botfather). 
 
 </details>
 

@@ -1,20 +1,31 @@
-const token = "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;"
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "你的名子" }
+];
 
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "使用者名稱"
 const discordWebhook = ""
 
 /** 以上為設定檔，請參考 https://github.com/canaria3406/hoyolab-auto-sign 之說明進行設定**/
 /** 以下為程式碼，請勿更動 **/
 
+const urlDict = {
+  Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481',
+  Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311',
+  Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111'
+}
+
 function main() {
 
-  let hoyolabResp = autoSignFunction();
+  let hoyolabResp = discordPing();
+
+  profiles.forEach(profile => {
+    hoyolabResp += autoSignFunction(profile) + '\n\n';
+  });
 
   if(discord_notify == true) {
     if(discordWebhook) {
@@ -24,11 +35,21 @@ function main() {
 
 }
 
-function autoSignFunction() {
+function discordPing() {
+  if(discord_notify && myDiscordID) {
+    return `<@${myDiscordID}>\n`;
+  } else {
+    return "";
+  }
+}
 
-  const signurl_gs = 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481'
-  const signurl_hsr = 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311'
-  const signurl_bh3 = 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111'
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
+
+  const urls = [];
+
+  if (genshin) urls.push(urlDict.Genshin);
+  if (honkai_star_rail) urls.push(urlDict.Star_Rail);
+  if (honkai_3) urls.push(urlDict.Honkai_3);
 
   const header = {
     Cookie: token
@@ -40,29 +61,25 @@ function autoSignFunction() {
     muteHttpExceptions: true,
   };
 
-  let response = '';
+  let response = `${accountName} 的自動簽到作業已完成`;
 
-  if(myDiscordID) {
-    response += '<@' + myDiscordID + '>, ';
-  }
-  else {
-    response += myDiscordName + ', ';
-  }
-
-  if(genshin == true) {
-    let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
-    response += '\n' + JSON.parse(hoyolabResponse_gs).message;
-  }
-
-  if(honkai_star_rail == true) {
-    let hoyolabResponse_hsr = UrlFetchApp.fetch(signurl_hsr,options);
-    response += '\n' + JSON.parse(hoyolabResponse_hsr).message;
-  }
-
-  if(honkai_3 == true) {
-    let hoyolabResponse_bh3 = UrlFetchApp.fetch(signurl_bh3,options);
-    response += '\n' + JSON.parse(hoyolabResponse_bh3).message;
-  }
+  urls.forEach(url => {
+    let hoyolabResponse = UrlFetchApp.fetch(url,options);
+    const checkInResult = JSON.parse(hoyolabResponse).message;
+    const enGameName = Object.keys(urlDict).find(key => urlDict[key] === url);
+    switch (enGameName) {
+      case "Genshin":
+      gameName = "原神";
+      break;
+      case "Star_Rail":
+      gameName = "星穹鐵道";
+      break;
+      case "Honkai_3":
+      gameName = "崩壞3rd";
+      break;
+    }
+    response += `\n${gameName}： ${checkInResult}`;
+  });
 
   return response;
 }
