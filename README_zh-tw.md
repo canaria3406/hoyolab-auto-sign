@@ -18,11 +18,6 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 * **免費** - Google Apps Script目前是免費使用的佛心服務
 * **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
 
-## Demo
-若自動簽到完成，則傳送 OK  
-若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
-
 ## 配置
 1. 進入[Google Apps Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
 2. 選擇編輯器，貼上程式碼( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，並參考下述說明配置config檔，完成後儲存。
@@ -139,15 +134,58 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 </details>
 
-## Example 
-進行 崩壞3rd 簽到、進行 Discord 通知、不進行 Discord tag  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/02.png)
+## Demo
+若自動簽到完成，則傳送 OK  
+若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
-進行 原神、崩壞：星穹鐵道 簽到、進行 Discord 通知、進行 Discord tag  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/03.png)
+<details>
+<summary><b>進行原神及星穹鐵道自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>
+
+```javascript
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "胡桃" }
+];
+
+const discord_notify = true
+const myDiscordID = "240000800000300040"
+const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
+```
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/Z02.png)
+
+</details>
+
+<details>
+<summary><b>以帳號A進行原神自動簽到、以帳號B進行崩壞3自動簽到、進行 Telegram 通知</b></summary>
+
+```javascript
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: false, 
+    honkai_3: false, 
+    accountName: "帳號A" },
+  { token: "ltoken=gAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNA;ltuid=28XXXXX42;", 
+    genshin: false, 
+    honkai_star_rail: false, 
+    honkai_3: true, 
+    accountName: "帳號B" }
+];
+
+const telegram_notify = true
+const myTelegramID = "1XXXXXXX0"
+const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
+```
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/Z03.png)
+
+</details>
 
 ## Changelog
 2022-12-30 專案公開  
 2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
-2023-04-27 新增 Discord 通知開關
+2023-04-27 新增 Discord 通知開關  
 2023-05-28 新增 Telegram 通知版本

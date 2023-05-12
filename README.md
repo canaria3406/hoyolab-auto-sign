@@ -18,11 +18,6 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
 * **Free** - Google Apps Script is currently a free service.
 * **Simple** - The script can run without a browser and will automatically notify you through Discord or Telegram.
 
-## Demo
-If the auto check in process is success, it will send "OK".  
-If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
-
 ## Setup
 1. Go to [Google Apps Script](https://script.google.com/home/start) and create a new project with your custom name.
 2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) ). Refer to the instructions below to configure the config file and save it.
@@ -147,12 +142,55 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 </details>
 
-## Example
-Enable Honkai Impact 3rd auto check in, enable Discord notify, do not tag in Discord.
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/02.png)
+## Demo
+If the auto check in process is success, it will send "OK".  
+If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
-Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, tag in Discord.
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/03.png)
+<details>
+<summary><b>Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, tag in Discord.</b></summary>
+
+```javascript
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: true, 
+    honkai_3: false, 
+    accountName: "HuTao" }
+];
+
+const discord_notify = true
+const myDiscordID = "240000800000300040"
+const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
+```
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/E02.png)
+
+</details>
+
+<details>
+<summary><b>Enable Genshin Impact auto check in on accountA, Honkai Impact 3rd auto check in on accountB, enable Telegram notify.</b></summary>
+
+```javascript
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY;ltuid=26XXXXX20;", 
+    genshin: true, 
+    honkai_star_rail: false, 
+    honkai_3: false, 
+    accountName: "accountA" },
+  { token: "ltoken=gAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNA;ltuid=28XXXXX42;", 
+    genshin: false, 
+    honkai_star_rail: false, 
+    honkai_3: true, 
+    accountName: "accountB" }
+];
+
+const telegram_notify = true
+const myTelegramID = "1XXXXXXX0"
+const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
+```
+![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/E03.png)
+
+</details>
 
 ## Changelog
 2022-12-30 Project launched.  
