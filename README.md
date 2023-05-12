@@ -142,7 +142,7 @@ const myTelegramID = "1XXXXXXX0"
 
    Use the `/newbot` command to create a new bot on Telegram by messaging [@BotFather](https://t.me/botfather).  
    Once you have finished creating the bot, you will receive your Telegram Bot Token, which like `110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`.  
-   Copy your Telegram Bot Token and fill it in "quotes".
+   Copy your Telegram Bot Token and fill it in "quotes".  
    For more detailed instructions, you can refer to [this article](https://core.telegram.org/bots/features#botfather).
 
 3. **myTelegramID** - Please enter your Telegram ID.
