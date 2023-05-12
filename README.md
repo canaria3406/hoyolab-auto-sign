@@ -14,8 +14,8 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
 
 ## Features
 * **Lightweight** - The script only requires minimal configuration and is only 90 lines of code.
-* **Secure** - The script can be self-deployed to Google App Script, no worries about data leaks.
-* **Free** - Google App Script is currently a free service.
+* **Secure** - The script can be self-deployed to Google Apps Script, no worries about data leaks.
+* **Free** - Google Apps Script is currently a free service.
 * **Simple** - The script can run without a browser and will automatically notify you through Discord or Telegram.
 
 ## Demo
@@ -24,7 +24,7 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 ![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
 ## Setup
-1. Go to [Google App Script](https://script.google.com/home/start) and create a new project with your custom name.
+1. Go to [Google Apps Script](https://script.google.com/home/start) and create a new project with your custom name.
 2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) ). Refer to the instructions below to configure the config file and save it.
 3. Select "main" and click the "Run" button at the top.  
    Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).

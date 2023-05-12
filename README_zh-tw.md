@@ -14,8 +14,8 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ## 特色
 * **輕巧** - 僅需少量的設定即可運作，程式碼僅90行
-* **安全** - 自行部屬至Google App Script，不必擔心資料外洩的問題
-* **免費** - Google App Script目前是免費使用的佛心服務
+* **安全** - 自行部屬至Google Apps Script，不必擔心資料外洩的問題
+* **免費** - Google Apps Script目前是免費使用的佛心服務
 * **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
 
 ## Demo
@@ -24,7 +24,7 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 ![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
 ## 配置
-1. 進入[Google App Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
+1. 進入[Google Apps Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
 2. 選擇編輯器，貼上程式碼( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，並參考下述說明配置config檔，完成後儲存。
 3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
 4. 在左側選擇觸發條件，新增觸發條件  
@@ -57,7 +57,7 @@ const honkai_3 = false
      if (parts.length === 2) return parts.pop().split(';').shift();
    }
    let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';'
-   let ask = confirm(token + '\n\n按確定即可取得token');
+   let ask = confirm(token + '\n\n按下確定，並將取得的token貼至Google Apps Script專案當中');
    if (ask == true) {
      copy(token);
      msg = token;
