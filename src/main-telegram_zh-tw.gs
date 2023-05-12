@@ -1,5 +1,5 @@
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", genshin: true, honkai_star_rail: true, honkai_3: false }
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", genshin: true, honkai_star_rail: true, honkai_3: false, accountName: "使用者名稱" }
 ];
 
 const telegram_notify = true
@@ -30,7 +30,7 @@ function main(){
 
 }
 
-function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3 }) {
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
 
   const urls = [];
 
@@ -48,7 +48,8 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3 }) {
     muteHttpExceptions: true,
   };
 
-  let response = "";
+  // not sure how to translate this line from english so I've just put accountName.
+  let response = `${accountName}`;
 
   urls.forEach(url => {
     let hoyolabResponse_gs = UrlFetchApp.fetch(url,options);
