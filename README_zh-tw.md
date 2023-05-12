@@ -133,7 +133,8 @@ const myTelegramID = "1XXXXXXX0"
 2. **telegramBotToken** - 請填入您的 Telegram Bot Token.
 
    向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。  
-   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。複製Token並填入"括號內"即可。  
+   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。  
+   複製Token並填入"括號內"即可。  
    你可以參考[此篇文章](https://core.telegram.org/bots/features#botfather)以獲得更詳細的說明。
 
 3. **myTelegramID** - 請填入您的 Telegram ID.
