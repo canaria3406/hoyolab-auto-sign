@@ -1,4 +1,4 @@
-/** Enter the hoyolab sign-in page, press F12 to enter the console, paste the following code and execute it to get the token. **/
+/** 進入hoyolab簽到頁面，按F12進入console，貼上以下程式碼後執行即可取得token **/
 /** https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481 **/
 
 function getCookie(name) {

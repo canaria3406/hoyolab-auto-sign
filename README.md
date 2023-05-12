@@ -25,7 +25,7 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 
 ## Setup
 1. Go to [Google App Script](https://script.google.com/home/start) and create a new project with your custom name.
-2. Select the editor and [paste the code](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs). Refer to the instructions below to configure the config file and save it.
+2. Select the editor and paste the code([Discord ver.](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram ver.](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs)). Refer to the instructions below to configure the config file and save it.
 3. Select "main" and click the "Run" button at the top.  
    Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
 4. Click the trigger button on the left side and add a new trigger.  
