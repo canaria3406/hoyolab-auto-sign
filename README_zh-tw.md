@@ -36,15 +36,12 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 ## config檔設定
 
 ```javascript
-const token = ""
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "", genshin: true, honkai_star_rail: true, honkai_3: false, accountName: "使用者名稱" }
+];
 
 const discord_notify = true
 const myDiscordID = ""
-const myDiscordName = "使用者名稱"
 const discordWebhook = ""
 ```
 
@@ -92,7 +89,7 @@ const discordWebhook = ""
    Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可  
    若您不希望被tag，請讓"括號內"保持空白。
    
-7. **myDiscordName** - 請填入您自訂的 Discord 名稱
+7. **accountName** - 請填入您自訂的 Discord 名稱
 
    若您讓myDiscordID的"括號內"保持空白，請填入自訂的Discord名稱。
    

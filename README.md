@@ -37,6 +37,14 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 ## Configuration
 
 ```javascript
+const profiles = [
+  { token: "", genshin: true, honkai_star_rail: true, honkai_3: false, accountName: "YOUR NICKNAME" }
+];
+
+const discord_notify = true
+const myDiscordID = "";
+const discordWebhook = "";
+
 const token = ""
 
 const genshin = true
@@ -98,9 +106,9 @@ const discordWebhook = ""
    Copy your Discord user ID and fill it in "quotes".  
    If you don't want to be tagged, leave the "quotes" empty.
 
-7. **myDiscordName** - Please enter your customized nickname.
+7. **accountName** - Please enter your customized nickname.
 
-   If you leave the myDiscordID "quotes" empty, please enter your customized Discord name here.
+   Please enter your customized Discord or in-game name here.
 
 8. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
 

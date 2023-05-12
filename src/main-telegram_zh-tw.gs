@@ -1,8 +1,6 @@
-const token = "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;"
-
-const genshin = true
-const honkai_star_rail = true
-const honkai_3 = false
+const profiles = [
+  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", genshin: true, honkai_star_rail: true, honkai_3: false }
+];
 
 const telegram_notify = true
 const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
@@ -11,9 +9,18 @@ const myTelegramID = "1XXXXXXX0"
 /** 以上為設定檔，請參考 https://github.com/canaria3406/hoyolab-auto-sign/ 之說明進行設定**/
 /** 以下為程式碼，請勿更動 **/
 
+const urlDict = {
+  Genshin: "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481",
+  Star_Rail: "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311",
+  Honkai_3: "https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111"
+}
+
 function main(){
 
-  let hoyolabResp = autoSignFunction();
+  let hoyolabResp = ""
+  profiles.forEach(profile => {
+    hoyolabResp += autoSignFunction(profile) + "\n\n";
+  });
 
   if(telegram_notify == true){
     if(telegramBotToken && myTelegramID){
@@ -23,11 +30,13 @@ function main(){
 
 }
 
-function autoSignFunction() {
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3 }) {
 
-  const signurl_gs = "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481"
-  const signurl_hsr = "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311"
-  const signurl_bh3 = "https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111"
+  const urls = [];
+
+  if (genshin) urls.push(urlDict.Genshin);
+  if (honkai_star_rail) urls.push(urlDict.Star_Rail);
+  if (honkai_3) urls.push(urlDict.Honkai_3);
 
   const header = {
     Cookie: token
@@ -41,20 +50,23 @@ function autoSignFunction() {
 
   let response = "";
 
-  if(genshin == true){
-    let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
-    response += JSON.parse(hoyolabResponse_gs).message + "\n";
-  }
-
-  if(honkai_star_rail == true){
-    let hoyolabResponse_hsr = UrlFetchApp.fetch(signurl_hsr,options);
-    response += JSON.parse(hoyolabResponse_hsr).message + "\n";
-  }
-
-  if(honkai_3 == true){
-    let hoyolabResponse_bh3 = UrlFetchApp.fetch(signurl_bh3,options);
-    response += JSON.parse(hoyolabResponse_bh3).message + "\n";
-  }
+  urls.forEach(url => {
+    let hoyolabResponse_gs = UrlFetchApp.fetch(url,options);
+    const checkInResult = JSON.parse(hoyolabResponse_gs).message;
+    const enGameName = Object.keys(urlDict).find(key => urlDict[key] === url);
+	switch (enGameName) {
+	  case "Genshin":
+		gameName = "原神";
+		break;
+	  case "Star_Rail":
+		gameName = "崩壞：星穹鐵道";
+		break;
+	  case "Honkai_3":
+		gameName = "崩壞3rd";
+		break;
+	}
+    response += `\n${gameName}：${checkInResult}`;
+  });
 
   return response;
 }
