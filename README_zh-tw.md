@@ -136,9 +136,6 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Demo
-若自動簽到完成，則傳送 OK  
-若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
 <details>
 <summary><b>進行原神及星穹鐵道自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>

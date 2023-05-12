@@ -144,9 +144,6 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Demo
-If the auto check in process is success, it will send "OK".  
-If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
 
 <details>
 <summary><b>Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, tag in Discord.</b></summary>
