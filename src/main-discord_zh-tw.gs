@@ -26,9 +26,9 @@ function main() {
 
 function autoSignFunction() {
 
-  const signurl_gs = "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481"
-  const signurl_hsr = "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311"
-  const signurl_bh3 = "https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111"
+  const signurl_gs = 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481'
+  const signurl_hsr = 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311'
+  const signurl_bh3 = 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111'
 
   const header = {
     Cookie: token
@@ -40,28 +40,28 @@ function autoSignFunction() {
     muteHttpExceptions: true,
   };
 
-  let response = "";
+  let response = '';
 
   if(myDiscordID) {
-    response += "<@" + myDiscordID + ">, ";
+    response += '<@' + myDiscordID + '>, ';
   }
   else {
-    response += myDiscordName + ", ";
+    response += myDiscordName + ', ';
   }
 
   if(genshin == true) {
     let hoyolabResponse_gs = UrlFetchApp.fetch(signurl_gs,options);
-    response += "\n" + JSON.parse(hoyolabResponse_gs).message;
+    response += '\n' + JSON.parse(hoyolabResponse_gs).message;
   }
 
   if(honkai_star_rail == true) {
     let hoyolabResponse_hsr = UrlFetchApp.fetch(signurl_hsr,options);
-    response += "\n" + JSON.parse(hoyolabResponse_hsr).message;
+    response += '\n' + JSON.parse(hoyolabResponse_hsr).message;
   }
 
   if(honkai_3 == true) {
     let hoyolabResponse_bh3 = UrlFetchApp.fetch(signurl_bh3,options);
-    response += "\n" + JSON.parse(hoyolabResponse_bh3).message;
+    response += '\n' + JSON.parse(hoyolabResponse_bh3).message;
   }
 
   return response;
@@ -70,9 +70,9 @@ function autoSignFunction() {
 function postWebhook(data) {
 
   let payload = JSON.stringify({
-    "username": "自動簽到",
-    "avatar_url": "https://i.imgur.com/LI1D4hP.png",
-    "content": data
+    'username': '自動簽到',
+    'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
+    'content': data
   });
 
   const options = {
