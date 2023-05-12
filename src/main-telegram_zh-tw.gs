@@ -69,7 +69,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
       gameName = "崩壞3rd";
       break;
     }
-    response += `\n${gameName}: ${checkInResult}`;
+    response += `\n${gameName}： ${checkInResult}`;
   });
 
   return response;
