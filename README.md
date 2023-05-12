@@ -140,13 +140,14 @@ const myTelegramID = "1XXXXXXX0"
 
 2. **telegramBotToken** - Please enter your Telegram Bot Token.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
-   Copy your Discord user ID and fill it in "quotes".  
+   Use the `/newbot` command to create a new bot on Telegram by messaging [@BotFather](https://t.me/botfather).  
+   Once you have finished creating the bot, you will receive your Telegram Bot Token, which like `110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`.  
+   Copy your Telegram Bot Token and fill it in "quotes".
+   For more detailed instructions, you can refer to [this article](https://core.telegram.org/bots/features#botfather).
 
 3. **myTelegramID** - Please enter your Telegram ID.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
-   Copy your Discord user ID and fill it in "quotes".  
+   Use the `/getid` command to find your Telegram user ID by messaging [@IDBot](https://t.me/myidbot).  
 
 </details>
 

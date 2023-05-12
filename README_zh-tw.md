@@ -49,7 +49,7 @@ const honkai_3 = false
 1. **token** - 請填入hoyolab簽到頁面的token
 
    進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
-   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
+   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**。
    ```javascript
    function getCookie(name) {
      const value = `; ${document.cookie}`;
@@ -104,7 +104,7 @@ const discordWebhook = ""
 
 2. **myDiscordID** - 請填入自己的 Discord ID
 
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可  
+   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)，複製ID並填入"括號內"即可。  
    若您不希望被tag，請讓"括號內"保持空白。
    
 3. **myDiscordName** - 請填入您自訂的 Discord 名稱
@@ -113,7 +113,7 @@ const discordWebhook = ""
    
 4. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
 
-   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可
+   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)，複製webhook網址並填入"括號內"即可。
 
 </details>
 
@@ -132,13 +132,13 @@ const myTelegramID = "1XXXXXXX0"
 
 2. **telegramBotToken** - 請填入您的 Telegram Bot Token.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
-   Copy your Discord user ID and fill it in "quotes".  
+   向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。  
+   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。複製Token並填入"括號內"即可。  
+   你可以參考[此篇文章](https://core.telegram.org/bots/features#botfather)以獲得更詳細的說明。
 
 3. **myTelegramID** - 請填入您的 Telegram ID.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
-   Copy your Discord user ID and fill it in "quotes".  
+   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，複製ID並填入"括號內"即可。
 
 </details>
 
