@@ -92,15 +92,15 @@ const honkai_3 = false
 
 </details>
 
+<details>
+<summary><b>discord notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs">Discord version</a>)</b></summary>
+
 ```javascript
 const discord_notify = true
 const myDiscordID = ""
 const myDiscordName = "YOUR NICKNAME"
 const discordWebhook = ""
 ```
-
-<details>
-<summary><b>discord notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs">Discord version</a>)</b></summary>
 
 1. **discord_notify**
 
@@ -124,14 +124,14 @@ const discordWebhook = ""
 
 </details>
 
+<details>
+<summary><b>telegram notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs">Telegram version</a>)</b></summary>
+
 ```javascript
 const telegram_notify = true
 const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 const myTelegramID = "1XXXXXXX0"
 ```
-
-<details>
-<summary><b>telegram notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs">Telegram version</a>)</b></summary>
 
 1. **telegram_notify**
 
