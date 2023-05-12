@@ -5,7 +5,7 @@ const honkai_star_rail = true
 const honkai_3 = false
 
 const telegram_notify = true
-const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
+const telegramBotToken = ""
 const myTelegramID = "1XXXXXXX0"
 
 /** 以上為設定檔，請參考 https://github.com/canaria3406/hoyolab-auto-sign/ 之說明進行設定**/

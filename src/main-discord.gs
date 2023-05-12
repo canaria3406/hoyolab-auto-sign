@@ -7,7 +7,7 @@ const honkai_3 = false
 const discord_notify = true
 const myDiscordID = ""
 const myDiscordName = "YOUR NICKNAME"
-const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
+const discordWebhook = ""
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign for configuration. **/
 /** The following is the script code. Please DO NOT modify. **/
