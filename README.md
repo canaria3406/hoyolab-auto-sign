@@ -10,7 +10,7 @@
 </p>
 
 A lightweight, secure, and free script that automatically collect Hoyolab daily check in rewards.  
-Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
+Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multiple accounts.
 
 ## Features
 * **Lightweight** - The script only requires minimal configuration and is only 90 lines of code.
@@ -106,7 +106,7 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 
    You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
    Copy your Discord user ID and fill it in "quotes".  
-   If you don't want to be tagged, leave the "quotes" empty.
+   If you don't want to be pinged, leave the "quotes" empty.
 
 3. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
 
@@ -144,9 +144,12 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Demo
+If the auto check in process is success, it will send "OK".  
+If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"  
 
 <details>
-<summary><b>Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, tag in Discord.</b></summary>
+<summary><b>Single Hoyolab account auto check-in with Discord notification and ping.</b></summary>
+Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, ping in Discord.
 
 ```javascript
 const profiles = [
@@ -166,7 +169,8 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 </details>
 
 <details>
-<summary><b>Enable Genshin Impact auto check in on accountA, Honkai Impact 3rd auto check in on accountB, enable Telegram notify.</b></summary>
+<summary><b>Two Hoyolab accounts auto check-in with Telegram notification.</b></summary>
+Enable Genshin Impact auto check-in on accountA, Honkai Impact 3rd auto check-in on accountB, enable Telegram notify.
 
 ```javascript
 const profiles = [
@@ -194,4 +198,6 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2022-12-30 Project launched.  
 2023-04-27 Add support for Honkai Impact 3rd, and Honkai: Star Rail.  
 2023-04-27 Add switch for Discord notify.  
-2023-05-28 Add Telegram notify support.
+2023-05-12 Update get token process[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2).  
+2023-05-12 Add Telegram notify support[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3).  
+2023-05-13 Support multiple hoyolab accounts[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)

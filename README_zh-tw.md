@@ -10,7 +10,7 @@
 </p>
 
 hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  
-支援 原神、崩壞：星穹鐵道、崩壞3rd。
+支援 原神、崩壞：星穹鐵道、崩壞3rd。支援多帳號。
 
 ## 特色
 * **輕巧** - 僅需少量的設定即可運作，程式碼僅90行
@@ -136,9 +136,12 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Demo
+若自動簽到完成，則傳送 OK  
+若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
 
 <details>
-<summary><b>進行原神及星穹鐵道自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>
+<summary><b>範例 單帳號自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>
+進行原神及星穹鐵道自動簽到、進行 Discord 通知、進行 Discord tag
 
 ```javascript
 const profiles = [
@@ -158,7 +161,8 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 </details>
 
 <details>
-<summary><b>以帳號A進行原神自動簽到、以帳號B進行崩壞3自動簽到、進行 Telegram 通知</b></summary>
+<summary><b>範例 雙帳號自動簽到、進行 Telegram 通知</b></summary>
+以帳號A進行原神自動簽到、以帳號B進行崩壞3自動簽到、進行 Telegram 通知
 
 ```javascript
 const profiles = [
@@ -186,4 +190,6 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2022-12-30 專案公開  
 2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
 2023-04-27 新增 Discord 通知開關  
-2023-05-28 新增 Telegram 通知版本
+2023-05-12 更新 getToken 函式[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2)  
+2023-05-12 新增 Telegram 版本[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3)  
+2023-05-13 支援多帳號[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
