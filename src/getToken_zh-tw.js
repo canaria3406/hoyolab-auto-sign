@@ -6,7 +6,7 @@ function getCookie(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
-let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';'
+let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
 let ask = confirm(token + '\n\n按下確定，並將取得的token貼至Google Apps Script專案當中');
 if (ask == true) {
   copy(token);
