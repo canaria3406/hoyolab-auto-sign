@@ -54,7 +54,7 @@ const profiles = [
      const parts = value.split(`; ${name}=`);
      if (parts.length === 2) return parts.pop().split(';').shift();
    }
-   let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';'
+   let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
    let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
    if (ask == true) {
      copy(token);
@@ -84,7 +84,7 @@ const profiles = [
 
 5. **accountName** - Please enter your customized nickname.
 
-   Please enter your customized Discord or in-game nickname here.
+   Please enter your customized Hoyolab or in-game nickname here.
 
 </details>
 
