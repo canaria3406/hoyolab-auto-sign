@@ -124,7 +124,7 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2. **myTelegramID** - 請填入您的 Telegram ID.
 
    向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，  
-   你的 Telegram ID 看起來會像`1XXXXXXX0`，複製並填入"括號內"即可。
+   你的 Telegram ID 看起來會像`123456780`，複製並填入"括號內"即可。
 
 3. **telegramBotToken** - 請填入您的 Telegram Bot Token.
 

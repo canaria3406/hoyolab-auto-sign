@@ -132,7 +132,7 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2. **myTelegramID** - Please enter your Telegram ID.
 
    Use the `/getid` command to find your Telegram user ID by messaging [@IDBot](https://t.me/myidbot).  
-   Copy your Telegram ID which like `1XXXXXXX0` and fill it in "quotes".  
+   Copy your Telegram ID which like `123456780` and fill it in "quotes".  
 
 3. **telegramBotToken** - Please enter your Telegram Bot Token.
 
