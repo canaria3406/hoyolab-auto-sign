@@ -39,7 +39,7 @@ function discordPing() {
   if(discord_notify && myDiscordID) {
     return `<@${myDiscordID}>\n`;
   } else {
-    return "";
+    return '';
   }
 }
 

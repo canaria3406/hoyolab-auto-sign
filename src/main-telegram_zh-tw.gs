@@ -59,14 +59,14 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
     const checkInResult = JSON.parse(hoyolabResponse).message;
     const enGameName = Object.keys(urlDict).find(key => urlDict[key] === url);
     switch (enGameName) {
-      case "Genshin":
-      gameName = "原神";
+      case 'Genshin':
+      gameName = '原神';
       break;
-      case "Star_Rail":
-      gameName = "星穹鐵道";
+      case 'Star_Rail':
+      gameName = '星穹鐵道';
       break;
-      case "Honkai_3":
-      gameName = "崩壞3rd";
+      case 'Honkai_3':
+      gameName = '崩壞3rd';
       break;
     }
     response += `\n${gameName}： ${checkInResult}`;
