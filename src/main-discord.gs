@@ -19,13 +19,10 @@ const urlDict = {
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
 }
 
-function main() {
+async function main() {
 
-  let hoyolabResp = discordPing();
-
-  profiles.forEach(profile => {
-    hoyolabResp += autoSignFunction(profile) + '\n\n';
-  });
+  const messages = await Promise.all(profiles.map(autoSignFunction));
+  const hoyolabResp = `${discordPing()}${messages.join('/n/n')}`
 
   if(discord_notify == true) {
     if(discordWebhook) {
@@ -63,10 +60,11 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
 
   let response = `Check-in completed for ${accountName}`;
 
-  urls.forEach(url => {
-    let hoyolabResponse = UrlFetchApp.fetch(url,options);
+  const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
+
+  for (const [i, hoyolabResponse] of httpResponses.entries()) {
     const checkInResult = JSON.parse(hoyolabResponse).message;
-    const gameName = Object.keys(urlDict).find(key => urlDict[key] === url)?.replace(/_/g, ' ');
+    const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
     response += `\n${gameName}: ${checkInResult}`;
   });
 
