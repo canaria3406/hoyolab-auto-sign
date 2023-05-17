@@ -22,7 +22,7 @@ const urlDict = {
 async function main() {
 
   const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${discordPing()}${messages.join('/n/n')}`
+  const hoyolabResp = `${discordPing()}${messages.join('\n\n')}`
 
   if(discord_notify == true) {
     if(discordWebhook) {
@@ -66,7 +66,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
     const checkInResult = JSON.parse(hoyolabResponse).message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
     response += `\n${gameName}: ${checkInResult}`;
-  });
+  };
 
   return response;
 }

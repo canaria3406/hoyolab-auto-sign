@@ -22,7 +22,7 @@ const urlDict = {
 async function main(){
 
   const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${messages.join('/n/n')}`
+  const hoyolabResp = `${messages.join('\n\n')}`
 
   if(telegram_notify == true){
     if(telegramBotToken && myTelegramID){
@@ -69,7 +69,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
       break;
     }
     response += `\n${gameName}： ${checkInResult}`;
-  });
+  };
 
   return response;
 }
