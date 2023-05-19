@@ -66,7 +66,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const checkInResult = (JSON.parse(hoyolabResponse).message).match(/^[^.~]+[.~]?/)?.[0] || checkInResult;
+    const checkInResult = (JSON.parse(hoyolabResponse).message).match(/^[^.]+\.?/)?.[0] || checkInResult;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
     const isError = checkInResult != "OK";
     response += `\n${gameName}: ${isError ? discordPing(discord_notify.on_error) : ""}${checkInResult}`;
