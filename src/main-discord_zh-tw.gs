@@ -25,7 +25,7 @@ const urlDict = {
 async function main() {
 
   const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${discordPing(discord_notify.on_run)}${messages.join('\n\n')}`
+  const hoyolabResp = `${discordPing(discord_notify.on_run)}\n${messages.join('\n\n')}`
 
   if(discordWebhook) {
     postWebhook(hoyolabResp);
@@ -35,7 +35,7 @@ async function main() {
 
 function discordPing(pingWanted) {
   if(pingWanted && myDiscordID) {
-    return `<@${myDiscordID}>\n`;
+    return `<@${myDiscordID}> `;
   } else {
     return '';
   }
