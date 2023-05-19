@@ -7,8 +7,8 @@ const profiles = [
 ];
 
 const discord_notify = {
-  on_run: true,
-  on_error: false
+  on_run: false,
+  on_error: true
 }
 const myDiscordID = ""
 const discordWebhook = ""

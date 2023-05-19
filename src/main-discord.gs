@@ -7,10 +7,8 @@ const profiles = [
 ];
 
 const discord_notify = {
-  // ping on every run
-  on_run: true,
-  // ping whenever there is an unsuccessful check-in
-  on_error: false
+  on_run: false,
+  on_error: true
 }
 const myDiscordID = ""
 const discordWebhook = ""
