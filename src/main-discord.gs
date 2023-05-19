@@ -6,7 +6,12 @@ const profiles = [
     accountName: "YOUR NICKNAME" }
 ];
 
-const discord_notify = true
+const discord_notify = {
+  // ping on every run
+  on_run: true,
+  // ping whenever there is an unsuccessful check-in
+  on_error: false
+}
 const myDiscordID = ""
 const discordWebhook = ""
 
@@ -22,18 +27,16 @@ const urlDict = {
 async function main() {
 
   const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${discordPing()}${messages.join('\n\n')}`
+  const hoyolabResp = `${discordPing(discord_notify.on_run)}${messages.join('\n\n')}`
 
-  if(discord_notify == true) {
-    if(discordWebhook) {
-      postWebhook(hoyolabResp);
-    }
+  if(discordWebhook) {
+    postWebhook(hoyolabResp);
   }
-
+  
 }
 
-function discordPing() {
-  if(discord_notify && myDiscordID) {
+function discordPing(pingWanted) {
+  if(pingWanted && myDiscordID) {
     return `<@${myDiscordID}>\n`;
   } else {
     return '';
@@ -65,7 +68,8 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
     const checkInResult = JSON.parse(hoyolabResponse).message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
-    response += `\n${gameName}: ${checkInResult}`;
+    const isError = checkInResult != "OK";
+    response += `\n${gameName}: ${isError ? discordPing(discord_notify.on_error) : ""}${checkInResult}`;
   };
 
   return response;
