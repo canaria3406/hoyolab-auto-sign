@@ -13,7 +13,7 @@ hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。
 支持 原神、崩坏：星穹铁道、崩坏三。支持多账号。
 
 ## 特色
-* **轻巧** - 僅需少量的設定即可運作，程式碼僅90行
+* **轻巧** - ，程式碼僅90行
 * **安全** - 自行部屬至Google Apps Script，不必擔心資料外洩的問題
 * **免費** - Google Apps Script目前是免費使用的佛心服務
 * **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
@@ -78,14 +78,14 @@ const profiles = [
    是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
    若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
 
-5. **accountName** - 請輸入你的暱稱
+5. **accountName** - 请输入你的昵称
 
-   請輸入你的Hoyolab暱稱或遊戲內暱稱，供通知使用。
+   请输入你的Hoyolab昵称或游戏内昵称，供通知使用。
 
 </details>
 
 <details>
-<summary><b>discord 通知設定 (適用於 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs">Discord版</a>)</b></summary>
+<summary><b>discord 通知设置 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs">Discord版</a>)</b></summary>
 
 ```javascript
 const discord_notify = {
@@ -98,26 +98,26 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 
 1. **discord_notify**
 
-   是否要進行Discord的自動簽到tag。  
-   如果希望每次執行時都被tag，請將 `on_run` 設定為 true。如果不需要每次執行時都被tag，請將其設定為 false。  
-   如果希望在執行失敗時被tag，請將 `on_error` 設定為 true。如果不需要在執行失敗時被tag，請將其設定為 false。
+   是否要进行Discord的自动签到tag。  
+   如果希望每次执行时都被tag，请将 `on_run` 设定为 true。如果不需要每次执行时都被tag，请将其设定为 false。  
+   如果希望在执行失败时被tag，请将 `on_error` 设定为 true。如果不需要在执行失败被tag，请将其设定为 false。
 
-2. **myDiscordID** - 請填入自己的 Discord ID
+2. **myDiscordID** - 请填入自己的 Discord ID
 
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。  
-   你的 Discord ID 看起來會像`23456789012345678`，複製ID並填入"括號內"即可。  
-   若您不希望被tag，請讓"括號內"保持空白。
+   Discord ID 取得方法可参考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。  
+   你的 Discord ID 看起来会像`23456789012345678`，复制ID并填入"括号内"即可。  
+   若您不希望被tag，请让"括号内"保持空白。
    
-3. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
+3. **discordWebhook** - 请填入发送通知的服务器频道之 Discord Webhook
 
-   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)。  
-   當你建立 Discord Webhook 後，您會取得 Discord Webhook 網址，看起來會像`https://discord.com/api/webhooks/1234567890987654321/PekopekoPekopekoPekopeko06f810494a4dbf07b726924a5f60659f09edcaa1`。  
-   複製 Webhook 網址 並填入"括號內"即可。
+   Discord Webhook 建立方式可参考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)。  
+   当你建立 Discord Webhook 后，您会取得 Discord Webhook 网址，看起来会像`https://discord.com/api/webhooks/1234567890987654321/PekopekoPekopekoPekopeko06f810494a4dbf07b726924a5f60659f09edcaa1`。  
+   复制 Webhook 網址 并填入"括号内"即可。
 
 </details>
 
 <details>
-<summary><b>telegram 通知設定 (適用於 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs">Telegram版</a>)</b></summary>
+<summary><b>telegram 通知设定 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs">Telegram版</a>)</b></summary>
 
 ```javascript
 const telegram_notify = true
@@ -127,29 +127,29 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 1. **telegram_notify**
 
-   是否要進行Telegram的自動簽到通知。若要進行自動簽到通知則為true，若不要請填入false。
+   是否要进行Telegram的自动签到通知。若要进行自动签到通知則為true，若不要请填入false。
 
-2. **myTelegramID** - 請填入您的 Telegram ID.
+2. **myTelegramID** - 请填入您的 Telegram ID.
 
-   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，  
-   你的 Telegram ID 看起來會像`123456780`，複製並填入"括號內"即可。
+   向 [@IDBot](https://t.me/myidbot) 发送 `/getid` 指令以取得您的 Telegram ID，  
+   你的 Telegram ID 看起来会像`123456780`，复制并填入"括号内"即可。
 
-3. **telegramBotToken** - 請填入您的 Telegram Bot Token.
+3. **telegramBotToken** - 请填入您的 Telegram Bot Token.
 
-   向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。  
-   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。  
-   複製Token並填入"括號內"即可。  
-   你可以參考[此篇文章](https://core.telegram.org/bots/features#botfather)以獲得更詳細的說明。
+   向 [@BotFather](https://t.me/botfather) 发送 `/newbot` 指令以建立新的 Telegram Bot。  
+   当你建立 Telegram Bot 后，您会取得 Telegram Bot Token，看起来会像`1145141919810:AAHomo11c4v5C1H41s0K5PALDsaw`。  
+   复制Token并填入"括号内"即可。  
+   你可以参考[此篇文章](https://core.telegram.org/bots/features#botfather)以取得更详细的说明。
 
 </details>
 
 ## Demo
-若自動簽到完成，則傳送 OK  
-若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
+若自动签到完成，则发送 OK  
+若今天已签到过，則发送 旅行者/开拓者/船长，你已经签到过了~  
 
 <details>
-<summary><b>範例 單帳號自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>
-進行原神及星穹鐵道自動簽到、進行 Discord 通知、進行 Discord tag
+<summary><b>范例 单账号自动签到、进行 Discord 通知、进行 Discord tag</b></summary>
+进行原神及星穹铁道自动签到、进行 Discord 通知、进行 Discord tag
 
 ```javascript
 const profiles = [
@@ -169,8 +169,8 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 </details>
 
 <details>
-<summary><b>範例 雙帳號自動簽到、進行 Telegram 通知</b></summary>
-以帳號A進行原神自動簽到、以帳號B進行崩壞3自動簽到、進行 Telegram 通知
+<summary><b>举例 多账号自动签到、进行 Telegram 通知</b></summary>
+以账号A进行原神自动签到、以账号B進行崩壞3自动签到、进行 Telegram 通知
 
 ```javascript
 const profiles = [
@@ -178,12 +178,12 @@ const profiles = [
     genshin: true, 
     honkai_star_rail: false, 
     honkai_3: false, 
-    accountName: "帳號A" },
+    accountName: "账号A" },
   { token: "ltoken=gAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNA; ltuid=28XXXXX42;", 
     genshin: false, 
     honkai_star_rail: false, 
     honkai_3: true, 
-    accountName: "帳號B" }
+    accountName: "账号B" }
 ];
 
 const telegram_notify = true
@@ -195,9 +195,9 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Changelog
-2022-12-30 專案公開  
-2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
-2023-04-27 新增 Discord 通知開關  
+2022-12-30 公开源代码  
+2023-04-27 新增 崩坏：星穹铁道、崩坏三 支持  
+2023-04-27 新增 Discord 通知开关  
 2023-05-12 更新 getToken 函式[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2)  
 2023-05-12 新增 Telegram 版本[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3)  
-2023-05-13 支援多帳號[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
+2023-05-13 支持多账号[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
