@@ -20,7 +20,7 @@ hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。
 
 ## 配置
 1. 进入[Google Apps Script](https://script.google.com/home/start)，新增档案，名字可自定义。
-2. 选择编辑器，粘贴上程序代码( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，并参考下述说明配置config项，完成后保存。
+2. 选择编辑器，粘贴上程序代码( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-cn.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-cn.gs) )，并参考下述说明配置config项，完成后保存。
 3. 在上方选择main、点击上方的[**部署**]，并授予权限，确认配置是否正确(开始部署>部署完毕)。
 4. 在左侧选择条件，新增触发条件  
    选择您要执行的功能: main  
@@ -85,7 +85,7 @@ const profiles = [
 </details>
 
 <details>
-<summary><b>discord 通知设置 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs">Discord版</a>)</b></summary>
+<summary><b>discord 通知设置 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-cn.gs">Discord版</a>)</b></summary>
 
 ```javascript
 const discord_notify = {
@@ -117,7 +117,7 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 </details>
 
 <details>
-<summary><b>telegram 通知设定 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs">Telegram版</a>)</b></summary>
+<summary><b>telegram 通知设定 (适用于 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-cn.gs">Telegram版</a>)</b></summary>
 
 ```javascript
 const telegram_notify = true
