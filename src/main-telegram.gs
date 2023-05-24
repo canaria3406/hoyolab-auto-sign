@@ -3,6 +3,7 @@ const profiles = [
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
+    tears_of_themis: false,
     accountName: "YOUR NICKNAME" }
 ];
 
