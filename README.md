@@ -6,7 +6,7 @@
 <p align="center">
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign">
-    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
+    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-cn.md">简体中文</a>, <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
 </p>
 
 A lightweight, secure, and free script that automatically collect Hoyolab daily check in rewards.  
