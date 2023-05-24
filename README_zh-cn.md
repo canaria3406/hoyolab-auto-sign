@@ -66,17 +66,17 @@ const profiles = [
 2. **genshin**
 
    是否要进行 **原神** 的自动签到。若要进行自动签到则为true，若不要请填入false。  
-   若您没有游玩**原神**，或账号未綁定uid，请填写false。
+   若您没有游玩**原神**，或账号未绑定uid，请填写false。
 
 3. **honkai_star_rail**
 
    是否要进行 **崩坏：星穹铁道** 的自动签到。若要进行自动签到则为true，若不要请填入false。  
-   若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
+   若您没有游玩**崩坏：星穹铁道**，或账号未绑定uid，请填写false。
 
 4. **honkai_3**
 
-   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
+   是否要进行 **崩坏三** 的自动签到。若要进行自动签到则为true，若不要请填入false。  
+   若您没有游玩**崩坏三**，或账号未绑定uid，请填写false。
 
 5. **accountName** - 请输入你的昵称
 
@@ -112,7 +112,7 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 
    Discord Webhook 建立方式可参考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)。  
    当你建立 Discord Webhook 后，您会取得 Discord Webhook 网址，看起来会像`https://discord.com/api/webhooks/1234567890987654321/PekopekoPekopekoPekopeko06f810494a4dbf07b726924a5f60659f09edcaa1`。  
-   复制 Webhook 網址 并填入"括号内"即可。
+   复制 Webhook 网址 并填入"括号内"即可。
 
 </details>
 
