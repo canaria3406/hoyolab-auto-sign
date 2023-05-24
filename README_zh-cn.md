@@ -19,16 +19,16 @@ hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。
 * **简单** - 无需电脑浏览器即可自动帮你签到，并由 Discord 或 Telegram 自动通知
 
 ## 配置
-1. 進入[Google Apps Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
-2. 選擇編輯器，貼上程式碼( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，並參考下述說明配置config檔，完成後儲存。
-3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
-4. 在左側選擇觸發條件，新增觸發條件  
-   選擇您要執行的功能: main  
-   選取活動來源: 時間驅動  
-   選取時間型觸發條件類型: 日計時器  
-   選取時段: 自行選擇，建議選擇0900~1500之離峰任意時段
+1. 进入[Google Apps Script](https://script.google.com/home/start)，新增档案，名字可自定义。
+2. 选择编辑器，粘贴上程序代码( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，并参考下述说明配置config项，完成后保存。
+3. 在上方选择main、点击上方的[**部署**]，并授予权限，确认配置是否正确(开始部署>部署完毕)。
+4. 在左侧选择条件，新增触发条件  
+   选择您要执行的功能: main  
+   选取活动来源: 时间驱动  
+   选取时间型触发条件频率: 每日  
+   选取时段: 自行选择，建议选择0900~1500之远离高峰期任意时段
 
-## config檔設定
+## config档案设定
 
 ```javascript
 const profiles = [
@@ -36,17 +36,17 @@ const profiles = [
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
-    accountName: "你的名子" }
+    accountName: "你的名字" }
 ];
 ```
 
 <details>
-<summary><b>hoyolab 設定</b></summary>
+<summary><b>hoyolab 设定</b></summary>
 
-1. **token** - 請填入hoyolab簽到頁面的token
+1. **token** - 请填入hoyolab签到页面的token
 
-   進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
-   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
+   进入[hoyolab签到页面](https://www.hoyolab.com/circles)后，按F12进入console，  
+   粘贴上以下程序代码后运行即可取得token，**请注意token包含分号;，需一并复制并粘贴入"括号内"**
    ```javascript
    function getCookie(name) {
      const value = `; ${document.cookie}`;
@@ -54,7 +54,7 @@ const profiles = [
      if (parts.length === 2) return parts.pop().split(';').shift();
    }
    let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
-   let ask = confirm(token + '\n\n按下確定複製，並將取得的token貼至Google Apps Script專案當中');
+   let ask = confirm(token + '\n\n按下确认复制，并将取得的token粘贴至Google Apps Script项目脚本中');
    if (ask == true) {
      copy(token);
      msg = token;
@@ -65,12 +65,12 @@ const profiles = [
 
 2. **genshin**
 
-   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false。
+   是否要进行 **原神** 的自动签到。若要进行自动签到则为true，若不要请填入false。  
+   若您没有游玩**原神**，或账号未綁定uid，请填写false。
 
 3. **honkai_star_rail**
 
-   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
+   是否要进行 **崩坏：星穹铁道** 的自动签到。若要进行自动签到则为true，若不要请填入false。  
    若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
 
 4. **honkai_3**
