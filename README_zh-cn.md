@@ -9,11 +9,11 @@
     <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-cn.md">简体中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
 </p>
 
-hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  
-支援 原神、崩壞：星穹鐵道、崩壞3rd。支援多帳號。
+hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。  
+支持 原神、崩坏：星穹铁道、崩坏三。支持多账号。
 
 ## 特色
-* **輕巧** - 僅需少量的設定即可運作，程式碼僅90行
+* **轻巧** - 僅需少量的設定即可運作，程式碼僅90行
 * **安全** - 自行部屬至Google Apps Script，不必擔心資料外洩的問題
 * **免費** - Google Apps Script目前是免費使用的佛心服務
 * **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
