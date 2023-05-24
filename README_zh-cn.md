@@ -13,10 +13,10 @@ hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。
 支持 原神、崩坏：星穹铁道、崩坏三。支持多账号。
 
 ## 特色
-* **轻巧** - ，程式碼僅90行
-* **安全** - 自行部屬至Google Apps Script，不必擔心資料外洩的問題
-* **免費** - Google Apps Script目前是免費使用的佛心服務
-* **簡單** - 無須電腦瀏覽器即可自動幫你簽到，並由 Discord 或 Telegram 自動通知
+* **轻巧** - 仅需少量的设定即可操作，程式代码仅90行
+* **安全** - 自行部署至Google Apps Script，不必担心资料外泄的问题
+* **免费** - Google Apps Script目前是免费使用的良心服务
+* **简单** - 无需电脑浏览器即可自动帮你签到，并由 Discord 或 Telegram 自动通知
 
 ## 配置
 1. 進入[Google Apps Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
