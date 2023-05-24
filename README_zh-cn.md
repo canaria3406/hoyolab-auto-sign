@@ -164,13 +164,13 @@ const discord_notify = true
 const myDiscordID = "240000800000300040"
 const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 ```
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/Z02.png)
+
 
 </details>
 
 <details>
 <summary><b>举例 多账号自动签到、进行 Telegram 通知</b></summary>
-以账号A进行原神自动签到、以账号B進行崩壞3自动签到、进行 Telegram 通知
+以账号A进行原神自动签到、以账号B进行崩坏三自动签到、进行 Telegram 通知
 
 ```javascript
 const profiles = [
@@ -190,7 +190,7 @@ const telegram_notify = true
 const myTelegramID = "1XXXXXXX0"
 const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 ```
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/Z03.png)
+
 
 </details>
 
