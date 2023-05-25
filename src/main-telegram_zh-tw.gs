@@ -34,7 +34,7 @@ async function main(){
 
 }
 
-function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, tears_of_themis, accountName }) {
 
   const urls = [];
 
