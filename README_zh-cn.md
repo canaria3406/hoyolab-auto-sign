@@ -10,7 +10,7 @@
 </p>
 
 hoyolab自动签到脚本，每月约可领取60石，堪比蚊子腿。  
-支持 原神、崩坏：星穹铁道、崩坏三。支持多账号。
+支持 原神、崩坏：星穹铁道、崩坏三、未定事件簿。支持多账号。
 
 ## 特色
 * **轻巧** - 仅需少量的设定即可操作，程式代码仅90行
@@ -137,7 +137,7 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 3. **telegramBotToken** - 请填入您的 Telegram Bot Token.
 
    向 [@BotFather](https://t.me/botfather) 发送 `/newbot` 指令以建立新的 Telegram Bot。  
-   当你建立 Telegram Bot 后，您会取得 Telegram Bot Token，看起来会像`1145141919810:AAHomo11c4v5C1H41s0K5PALDsaw`。  
+   当你建立 Telegram Bot 后，您会取得 Telegram Bot Token，看起来会像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。  
    复制Token并填入"括号内"即可。  
    你可以参考[此篇文章](https://core.telegram.org/bots/features#botfather)以取得更详细的说明。
 
