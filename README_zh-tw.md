@@ -88,24 +88,21 @@ const profiles = [
 <summary><b>discord 通知設定 (適用於 <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs">Discord版</a>)</b></summary>
 
 ```javascript
-const discord_notify = {
-  on_run: false,
-  on_error: true
-}
+const discord_notify = true
 const myDiscordID = "20000080000000040"
 const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 ```
 
 1. **discord_notify**
 
-   是否要進行Discord的自動簽到tag。  
-   如果希望每次執行時都被tag，請將 `on_run` 設定為 true。如果不需要每次執行時都被tag，請將其設定為 false。  
-   如果希望在執行失敗時被tag，請將 `on_error` 設定為 true。如果不需要在執行失敗時被tag，請將其設定為 false。
+   是否要進行Discord的自動簽到通知。  
+   若要進行自動簽到通知則為true，若不要請填入false。
 
 2. **myDiscordID** - 請填入自己的 Discord ID
 
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。  
+   如果希望在執行失敗時被tag，請填入自己的 Discord ID。  
    你的 Discord ID 看起來會像`23456789012345678`，複製ID並填入"括號內"即可。  
+   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。  
    若您不希望被tag，請讓"括號內"保持空白。
    
 3. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook

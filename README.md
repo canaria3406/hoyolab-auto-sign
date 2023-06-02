@@ -92,10 +92,7 @@ const profiles = [
 <summary><b>discord notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs">Discord version</a>)</b></summary>
 
 ```javascript
-const discord_notify = {
-  on_run: false,
-  on_error: true
-}
+const discord_notify = true
 const myDiscordID = "20000080000000040"
 const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXnB"
 ```
@@ -103,13 +100,13 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 1. **discord_notify**
 
    Whether to enable Discord notify.  
-   If you want to be ping on every run, set `on_run` true. if not, please set it to false.  
-   If you want to be ping whenever there is an unsuccessful check-in, set `on_error` true. if not, please set it to false.
+   If you want to enable auto check-in notify, set it to true. If not, please set it to false.
 
 2. **myDiscordID** - Please enter your Discord user ID.
 
-   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
+   Whether you want to be ping when there is an unsuccessful check-in.  
    Copy your Discord user ID which like `23456789012345678` and fill it in "quotes".  
+   You can refer to [this article](https://support.discord.com/hc/en-us/articles/206346498) to find your Discord user ID.  
    If you don't want to be pinged, leave the "quotes" empty.
 
 3. **discordWebhook** - Please enter the Discord webhook for the server channel to send notify.
