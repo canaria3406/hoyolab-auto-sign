@@ -57,7 +57,13 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
     const checkInResult = JSON.parse(hoyolabResponse).message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
-    response += `\n${gameName}: ${checkInResult}`;
+    const bannedCheck = JSON.parse(hoyolabResponse).data?.gt_result?.is_risk;
+    if(bannedCheck){
+      response += `\n${gameName}: Auto check-in failed due to CAPTCHA blocking. Please stop this script immediately and perform manual check-in for at least one week before attempting to use this script again.`;
+    }
+    else{
+      response += `\n${gameName}: ${checkInResult}`;
+    }
   };
 
   return response;
