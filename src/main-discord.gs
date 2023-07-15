@@ -76,7 +76,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
     const isError = checkInResult != "OK";
     const bannedCheck = JSON.parse(hoyolabResponse).data?.gt_result?.is_risk;
     if(bannedCheck){
-      response += `\n${gameName}: ${discordPing()} Auto check-in failed due to CAPTCHA blocking. Please stop this script immediately and perform manual check-in for at least one week before attempting to use this script again.`;
+      response += `\n${gameName}: ${discordPing()} Auto check-in failed due to CAPTCHA blocking.`;
     }
     else{
       response += `\n${gameName}: ${isError ? discordPing() : ""}${checkInResult}`;

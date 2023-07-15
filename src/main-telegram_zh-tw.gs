@@ -78,7 +78,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
     }
     const bannedCheck = JSON.parse(hoyolabResponse).data?.gt_result?.is_risk;
     if(bannedCheck){
-      response += `\n${gameName}: 自動簽到失敗，受到圖形驗證阻擋。\n請立刻停止本程式，並進行至少一週的手動簽到，再嘗試本服務。`;
+      response += `\n${gameName}: 自動簽到失敗，受到圖形驗證阻擋。`;
     }
     else{
       response += `\n${gameName}: ${checkInResult}`;
