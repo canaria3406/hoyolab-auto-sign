@@ -32,13 +32,16 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
     accountName: "你的名子" }
 ];
 ```
+
+> Hoyolab在2023年7月更改了token的規則，從以往的"ltoken"和"ltuid"更改成"ltoken_v2"和"ltuid_v2"。
+請使用瀏覽器登出Hoyolab後，重新登入，然後使用[getToken.j](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken_zh-tw.js)取得使用於Google Apps Script的新token。
 
 <details>
 <summary><b>hoyolab 設定</b></summary>
@@ -53,7 +56,7 @@ const profiles = [
      const parts = value.split(`; ${name}=`);
      if (parts.length === 2) return parts.pop().split(';').shift();
    }
-   let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
+   let token = 'account_mid_v2=' + getCookie('account_mid_v2') + '; account_id_v2=' + getCookie('account_id_v2') + '; ltoken_v2=' + getCookie('ltoken_v2') + '; ltmid_v2=' + getCookie('ltmid_v2') + '; ltuid_v2=' + getCookie('ltuid_v2') + ';';
    let ask = confirm(token + '\n\n按下確定複製，並將取得的token貼至Google Apps Script專案當中');
    if (ask == true) {
      copy(token);
@@ -150,7 +153,7 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
@@ -171,12 +174,12 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: false, 
     honkai_3: false, 
     accountName: "帳號A" },
-  { token: "ltoken=gAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNA; ltuid=28XXXXX42;", 
+  { token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
     genshin: false, 
     honkai_star_rail: false, 
     honkai_3: true, 

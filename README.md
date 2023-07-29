@@ -33,13 +33,16 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multi
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
     accountName: "YOUR NICKNAME" }
 ];
 ```
+
+> Hoyolab has changed the rules for tokens on July 2023, switching from the previous "ltoken" and "ltuid" to "ltoken_v2" and "ltuid_v2".
+Please log out from Hoyolab using your browser, then log in again, and use [getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken.js) to obtain the new token for Google Apps Script.
 
 <details>
 <summary><b>hoyolab settings</b></summary>
@@ -54,7 +57,7 @@ const profiles = [
      const parts = value.split(`; ${name}=`);
      if (parts.length === 2) return parts.pop().split(';').shift();
    }
-   let token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
+   let token = 'account_mid_v2=' + getCookie('account_mid_v2') + '; account_id_v2=' + getCookie('account_id_v2') + '; ltoken_v2=' + getCookie('ltoken_v2') + '; ltmid_v2=' + getCookie('ltmid_v2') + '; ltuid_v2=' + getCookie('ltuid_v2') + ';';
    let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
    if (ask == true) {
      copy(token);
@@ -155,7 +158,7 @@ Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
@@ -176,12 +179,12 @@ Enable Genshin Impact auto check-in on accountA, Honkai Impact 3rd auto check-in
 
 ```javascript
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
+  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: false, 
     honkai_3: false, 
     accountName: "accountA" },
-  { token: "ltoken=gAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNA; ltuid=28XXXXX42;", 
+  { token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
     genshin: false, 
     honkai_star_rail: false, 
     honkai_3: true, 
