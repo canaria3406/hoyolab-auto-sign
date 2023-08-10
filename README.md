@@ -59,12 +59,12 @@ Please log out from Hoyolab using your browser, then log in again, and use [getT
    }
    let token = 'Error';
    if (document.cookie.includes('ltoken=')) {
-      token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
+      token = `ltoken=${getCookie('ltoken')}; ltuid=${getCookie('ltuid')};`;
    } else if (document.cookie.includes('ltoken_v2=')) {
-      token = 'account_mid_v2=' + getCookie('account_mid_v2') + '; account_id_v2=' + getCookie('account_id_v2') + '; ltoken_v2=' + getCookie('ltoken_v2') + '; ltmid_v2=' + getCookie('ltmid_v2') + '; ltuid_v2=' + getCookie('ltuid_v2') + ';';
+      token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
    }
    let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
-   if (ask == true) {
+   if (ask) {
       copy(token);
       msg = token;
    } else {

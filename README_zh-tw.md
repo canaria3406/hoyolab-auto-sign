@@ -58,12 +58,12 @@ const profiles = [
    }
    let token = 'Error';
    if (document.cookie.includes('ltoken=')) {
-      token = 'ltoken=' + getCookie('ltoken') + '; ltuid=' + getCookie('ltuid') + ';';
+      token = `ltoken=${getCookie('ltoken')}; ltuid=${getCookie('ltuid')};`;
    } else if (document.cookie.includes('ltoken_v2=')) {
-      token = 'account_mid_v2=' + getCookie('account_mid_v2') + '; account_id_v2=' + getCookie('account_id_v2') + '; ltoken_v2=' + getCookie('ltoken_v2') + '; ltmid_v2=' + getCookie('ltmid_v2') + '; ltuid_v2=' + getCookie('ltuid_v2') + ';';
+      token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
    }
    let ask = confirm(token + '\n\n按下確定，並將取得的token貼至Google Apps Script專案當中');
-   if (ask == true) {
+   if (ask) {
       copy(token);
       msg = token;
    } else {
