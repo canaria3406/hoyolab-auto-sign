@@ -24,10 +24,8 @@ async function main(){
   const messages = await Promise.all(profiles.map(autoSignFunction));
   const hoyolabResp = `${messages.join('\n\n')}`
 
-  if(telegram_notify == true){
-    if(telegramBotToken && myTelegramID){
-      postWebhook(hoyolabResp);
-    }
+  if (telegram_notify && telegramBotToken && myTelegramID) {
+    postWebhook(hoyolabResp);
   }
 
 }
@@ -63,7 +61,8 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const checkInResult = JSON.parse(hoyolabResponse).message;
+    const responseJson = JSON.parse(hoyolabResponse)
+    const checkInResult = responseJson.message;
     const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i]);
     switch (enGameName) {
       case 'Genshin':
@@ -76,11 +75,10 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
       gameName = '崩壞3rd';
       break;
     }
-    const bannedCheck = JSON.parse(hoyolabResponse).data?.gt_result?.is_risk;
-    if(bannedCheck){
+    const bannedCheck = responseJson.data?.gt_result?.is_risk;
+    if (bannedCheck) {
       response += `\n${gameName}: 自動簽到失敗，受到圖形驗證阻擋。`;
-    }
-    else{
+    } else {
       response += `\n${gameName}: ${checkInResult}`;
     }
   };
@@ -100,7 +98,7 @@ function postWebhook(data) {
     method: 'POST',
     contentType: 'application/json',
     payload: payload,
-    muteHttpExceptions: true,
+    muteHttpExceptions: true
   };
 
   UrlFetchApp.fetch('https://api.telegram.org/bot' + telegramBotToken + '/sendMessage', options);

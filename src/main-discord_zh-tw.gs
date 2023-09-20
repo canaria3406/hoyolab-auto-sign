@@ -23,21 +23,14 @@ async function main() {
 
   const messages = await Promise.all(profiles.map(autoSignFunction));
   const hoyolabResp = `${messages.join('\n\n')}`
-  
-  if(discord_notify == true){
-    if(discordWebhook) {
-      postWebhook(hoyolabResp);
-    }
-  }
 
+  if (discord_notify && discordWebhook) {
+    postWebhook(hoyolabResp);
+  }
 }
 
 function discordPing() {
-  if(myDiscordID) {
-    return `<@${myDiscordID}> `;
-  } else {
-    return '';
-  }
+  return myDiscordID ? `<@${myDiscordID}> ` : '';
 }
 
 function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
@@ -71,7 +64,8 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const checkInResult = JSON.parse(hoyolabResponse).message;
+    const responseJson = JSON.parse(hoyolabResponse)
+    const checkInResult = responseJson.message;
     const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i]);
     switch (enGameName) {
       case 'Genshin':
@@ -85,11 +79,10 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
       break;
     }
     const isError = checkInResult != "OK";
-    const bannedCheck = JSON.parse(hoyolabResponse).data?.gt_result?.is_risk;
-    if(bannedCheck){
+    const bannedCheck = responseJson.data?.gt_result?.is_risk;
+    if (bannedCheck) {
       response += `\n${gameName}: ${discordPing()} 自動簽到失敗，受到圖形驗證阻擋。`;
-    }
-    else{
+    } else {
       response += `\n${gameName}: ${isError ? discordPing() : ""}${checkInResult}`;
     }
   };
@@ -109,7 +102,7 @@ function postWebhook(data) {
     method: 'POST',
     contentType: 'application/json',
     payload: payload,
-    muteHttpExceptions: true,
+    muteHttpExceptions: true
   };
 
   UrlFetchApp.fetch(discordWebhook, options);
