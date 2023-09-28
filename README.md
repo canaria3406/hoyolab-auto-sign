@@ -6,10 +6,10 @@
 <p align="center">
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign">
-    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
+    <br><a href="/README_zh-tw.md">繁體中文</a>, English, <a href="/README_ru-ru.md">Русский</a>
 </p>
 
-A lightweight, secure, and free script that automatically collect Hoyolab daily check in rewards.  
+A lightweight, secure, and free script that automatically collect HoYoLAB daily check in rewards.  
 Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multiple accounts.
 
 ## Features
@@ -41,15 +41,15 @@ const profiles = [
 ];
 ```
 
-> Hoyolab has changed the rules for tokens on July 2023, switching from the previous "ltoken" and "ltuid" to "ltoken_v2" and "ltuid_v2".
-Please log out from Hoyolab using your browser, then log in again, and use [getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken.js) to obtain the new token for Google Apps Script.
+> HoYoLAB has changed the rules for tokens on July 2023, switching from the previous "ltoken" and "ltuid" to "ltoken_v2" and "ltuid_v2".
+Please log out from HoYoLAB using your browser, then log in again, and use [getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken.js) to obtain the new token for Google Apps Script.
 
 <details>
-<summary><b>hoyolab settings</b></summary>
+<summary><b>HoYoLAB settings</b></summary>
 
-1. **token** - Please enter the token for hoyolab check-in page.
+1. **token** - Please enter the token for HoYoLAB check-in page.
 
-   After entering the [hoyolab check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
+   After entering the [HoYoLAB check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
    Paste the following code and run it to get the token. Copy the token and fill it in "quotes".
    ```javascript
    function getCookie(name) {
@@ -92,7 +92,7 @@ Please log out from Hoyolab using your browser, then log in again, and use [getT
 
 5. **accountName** - Please enter your customized nickname.
 
-   Please enter your customized Hoyolab or in-game nickname here.
+   Please enter your customized HoYoLAB or in-game nickname here.
 
 </details>
 
@@ -158,7 +158,7 @@ If the auto check in process is success, it will send "OK".
 If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"  
 
 <details>
-<summary><b>Single Hoyolab account auto check-in with Discord notification and ping.</b></summary>
+<summary><b>Single HoYoLAB account auto check-in with Discord notification and ping.</b></summary>
 Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, ping in Discord.
 
 ```javascript
@@ -179,7 +179,7 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 </details>
 
 <details>
-<summary><b>Two Hoyolab accounts auto check-in with Telegram notification.</b></summary>
+<summary><b>Two HoYoLAB accounts auto check-in with Telegram notification.</b></summary>
 Enable Genshin Impact auto check-in on accountA, Honkai Impact 3rd auto check-in on accountB, enable Telegram notify.
 
 ```javascript
@@ -210,4 +210,4 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2023-04-27 Add switch for Discord notify.  
 2023-05-12 Update get token process[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2).  
 2023-05-12 Add Telegram notify support[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3).  
-2023-05-13 Support multiple hoyolab accounts[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
+2023-05-13 Support multiple HoYoLAB accounts[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
