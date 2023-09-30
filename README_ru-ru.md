@@ -4,9 +4,9 @@
 </h1>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign">
-    <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign">
-    <br><a href="/README_zh-tw.md">繁體中文</a>, <a href="/README.md">English</a>, Русский
+    <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <br><a href="/README_zh-tw.md">繁體中文</a>　<a href="/README.md">English</a>　<b>Русский</b>
 </p>
 
 Легкий, безопасный и бесплатный скрипт, который автоматически собирает ежедневные награды HoYoLAB.
