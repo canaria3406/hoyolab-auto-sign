@@ -1,5 +1,5 @@
 /** 進入hoyolab簽到頁面，按F12進入console，貼上以下程式碼後執行即可取得token **/
-/** https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481 **/
+/** https://www.hoyolab.com/circles **/
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
