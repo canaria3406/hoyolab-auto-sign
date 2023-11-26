@@ -14,9 +14,9 @@ const telegramBotToken = ""
 /** ĐÂY LÀ BẢN MOD THÔNG BÁO TRÊN TELEGRAM BẰNG TIẾNG VIỆT **/
 
 const urlDict = {
-  Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=vi-vn&act_id=e202102251931481',
-  Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=vi-vn&act_id=e202303301540311',
-  Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=vi-vn&act_id=e202110291205111'
+  Genshin_Impact: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=vi-vn&act_id=e202102251931481',
+  Honkai_Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=vi-vn&act_id=e202303301540311',
+  Honkai_Impact_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=vi-vn&act_id=e202110291205111'
 }
 
 async function main(){
