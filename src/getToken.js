@@ -1,4 +1,4 @@
-/** Enter the hoyolab check-in page, press F12 to enter the console, paste the following code and run it to get the token. **/
+/** Truy cập vào trang điểm danh của HoYoLAB, Sau đó bấm F12 trên bàn phím để mở hộp lệnh (DevTools), sau đó dán dòng code dưới đây vào tab "Bản điều khiển" (Console) . **/
 /** https://www.hoyolab.com/circles **/
 
 function getCookie(name) {
@@ -12,7 +12,7 @@ if (document.cookie.includes('ltoken=')) {
 } else if (document.cookie.includes('ltoken_v2=')) {
   token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
 }
-let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
+let ask = confirm(token + '\n\n Bấm Enter, sau đó dán token này vào Google Apps Script Project');
 if (ask) {
   copy(token);
   msg = token;
