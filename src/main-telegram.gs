@@ -1,37 +1,33 @@
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "YOUR NICKNAME" }
+  {
+    token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    accountName: "YOUR NICKNAME"
+  }
 ];
 
-const telegram_notify = true
-const myTelegramID = "1XXXXXXX0"
-const telegramBotToken = ""
-
-/** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign/ for configuration. **/
-/** The following is the script code. Please DO NOT modify. **/
+const telegram_notify = true;
+const myTelegramID = "1XXXXXXX0";
+const telegramBotToken = "";
 
 const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311',
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
-}
+};
 
-async function main(){
-
-  const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${messages.join('\n\n')}`
+function main() {
+  const messages = profiles.map(autoSignFunction);
+  const hoyolabResp = messages.join('\n\n');
 
   if (telegram_notify && telegramBotToken && myTelegramID) {
     postWebhook(hoyolabResp);
   }
-
 }
 
 function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
-
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
@@ -61,22 +57,22 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const responseJson = JSON.parse(hoyolabResponse)
+    const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
+
     if (bannedCheck) {
       response += `\n${gameName}: Auto check-in failed due to CAPTCHA blocking.`;
     } else {
       response += `\n${gameName}: ${checkInResult}`;
     }
-  };
+  }
 
   return response;
 }
 
 function postWebhook(data) {
-
   let payload = JSON.stringify({
     'chat_id': myTelegramID,
     'text': data,
