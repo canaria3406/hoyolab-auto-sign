@@ -33,7 +33,7 @@
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
+  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
@@ -41,8 +41,11 @@ const profiles = [
 ];
 ```
 
-> HoYoLAB изменила правила для токенов в июле 2023 года, перейдя с предыдущих "ltoken" и "ltuid" на "ltoken_v2" и "ltuid_v2".
-Пожалуйста, выйдите из HoYoLAB с помощью своего браузера, затем войдите снова и используйте [getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken.js), чтобы получить новый токен для Google Apps Script.
+> HoYoLAB изменила правила для токенов в июле 2023 года, перейдя с предыдущих "ltoken" и "ltuid" на "ltoken_v2" и "ltuid_v2".  
+
+> [!IMPORTANT]
+> HoYoLAB изменил Печенье на HttpOnly Печенье. Теперь невозможно считывать файлы Печенье с использованием кода getToken.js.  
+> Пожалуйста, воспользуйтесь методом ручного копирования файла Печенье для получения ltoken_v2 и ltuid_v2.  
 
 <details>
 <summary><b>Настройки HoYoLAB</b></summary>
@@ -50,27 +53,10 @@ const profiles = [
 1. **token** - Пожалуйста, введите токен для регистрации на странице HoYoLAB.
 
    После входа на [страницу регистрации в HoYoLAB](https://www.hoyalab.com/circles), нажмите клавишу F12, чтобы войти в консоль.
-Вставьте следующий код и запустите его, чтобы получить токен. Скопируйте токен и заключите его в "кавычки".
-   ```javascript
-   function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-   }
-   let token = 'Error';
-   if (document.cookie.includes('ltoken=')) {
-      token = `ltoken=${getCookie('ltoken')}; ltuid=${getCookie('ltuid')};`;
-   } else if (document.cookie.includes('ltoken_v2=')) {
-      token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
-   }
-   let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
-   if (ask) {
-      copy(token);
-      msg = token;
-   } else {
-      msg = 'Cancel';
-   }
-   ```
+   ~~Вставьте следующий код и запустите его, чтобы получить токен. Скопируйте токен и заключите его в "кавычки".~~
+
+   > HoYoLAB изменил Печенье на HttpOnly Печенье. Теперь невозможно считывать файлы Печенье с использованием кода getToken.js.  
+   > Пожалуйста, воспользуйтесь методом ручного копирования файла Печенье для получения ltoken_v2 и ltuid_v2.  
 
 2. **genshin**
 

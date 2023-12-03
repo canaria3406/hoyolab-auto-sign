@@ -32,7 +32,7 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
+  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
@@ -40,8 +40,11 @@ const profiles = [
 ];
 ```
 
-> Hoyolab在2023年7月更改了token的規則，從以往的"ltoken"和"ltuid"更改成"ltoken_v2"和"ltuid_v2"。
-請使用瀏覽器登出Hoyolab後，重新登入，然後使用[getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken_zh-tw.js)取得使用於Google Apps Script的新token。
+> Hoyolab在2023年7月更改了token的規則，從以往的"ltoken"和"ltuid"更改成"ltoken_v2"和"ltuid_v2"。  
+
+> [!IMPORTANT]
+> HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。  
+> 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。  
 
 <details>
 <summary><b>hoyolab 設定</b></summary>
@@ -49,27 +52,10 @@ const profiles = [
 1. **token** - 請填入hoyolab簽到頁面的token
 
    進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
-   貼上以下程式碼後執行即可取得token，**請注意token包含分號;，須一併複製並貼入"括號內"**
-   ```javascript
-   function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-   }
-   let token = 'Error';
-   if (document.cookie.includes('ltoken=')) {
-      token = `ltoken=${getCookie('ltoken')}; ltuid=${getCookie('ltuid')};`;
-   } else if (document.cookie.includes('ltoken_v2=')) {
-      token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
-   }
-   let ask = confirm(token + '\n\n按下確定，並將取得的token貼至Google Apps Script專案當中');
-   if (ask) {
-      copy(token);
-      msg = token;
-   } else {
-      msg = 'Cancel';
-   }
-   ```
+   ~~貼上以下程式碼後執行即可取得token，請注意token包含分號;，須一併複製並貼入"括號內"~~
+
+   > HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。  
+   > 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。  
 
 2. **genshin**
 

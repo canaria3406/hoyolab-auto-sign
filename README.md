@@ -33,7 +33,7 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multi
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
+  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: true, 
     honkai_3: false, 
@@ -41,8 +41,11 @@ const profiles = [
 ];
 ```
 
-> HoYoLAB has changed the rules for tokens on July 2023, switching from the previous "ltoken" and "ltuid" to "ltoken_v2" and "ltuid_v2".
-Please log out from HoYoLAB using your browser, then log in again, and use [getToken.js](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/getToken.js) to obtain the new token for Google Apps Script.
+> HoYoLAB has changed the rules for tokens on July 2023, switching from the previous "ltoken" and "ltuid" to "ltoken_v2" and "ltuid_v2".  
+
+> [!IMPORTANT]
+> HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
+> Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.  
 
 <details>
 <summary><b>HoYoLAB settings</b></summary>
@@ -50,27 +53,10 @@ Please log out from HoYoLAB using your browser, then log in again, and use [getT
 1. **token** - Please enter the token for HoYoLAB check-in page.
 
    After entering the [HoYoLAB check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
-   Paste the following code and run it to get the token. Copy the token and fill it in "quotes".
-   ```javascript
-   function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-   }
-   let token = 'Error';
-   if (document.cookie.includes('ltoken=')) {
-      token = `ltoken=${getCookie('ltoken')}; ltuid=${getCookie('ltuid')};`;
-   } else if (document.cookie.includes('ltoken_v2=')) {
-      token = `account_mid_v2=${getCookie('account_mid_v2')}; account_id_v2=${getCookie('account_id_v2')}; ltoken_v2=${getCookie('ltoken_v2')}; ltmid_v2=${getCookie('ltmid_v2')}; ltuid_v2=${getCookie('ltuid_v2')};`;
-   }
-   let ask = confirm(token + '\n\nPress enter, then paste the token into your Google Apps Script Project');
-   if (ask) {
-      copy(token);
-      msg = token;
-   } else {
-      msg = 'Cancel';
-   }
-   ```
+   ~~Paste the following code and run it to get the token. Copy the token and fill it in "quotes".~~
+   
+   > HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
+   > Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.  
 
 2. **genshin**
 
