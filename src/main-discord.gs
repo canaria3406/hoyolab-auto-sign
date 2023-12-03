@@ -1,9 +1,11 @@
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "YOUR NICKNAME" }
+  {
+    token: "ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    accountName: "YOUR NICKNAME"
+  }
 ];
 
 const discord_notify = true
@@ -20,11 +22,10 @@ const urlDict = {
 };
 
 async function main() {
-
   const messages = await Promise.all(profiles.map(autoSignFunction));
   const hoyolabResp = `${messages.join('\n\n')}`;
 
-  if (discord_notify && discordWebhook){
+  if (discord_notify && discordWebhook) {
     postWebhook(hoyolabResp);
   }
 }
@@ -34,7 +35,6 @@ function discordPing() {
 }
 
 function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
-
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
@@ -64,23 +64,23 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const responseJson = JSON.parse(hoyolabResponse)
+    const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
     const isError = checkInResult != "OK";
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
+
     if (bannedCheck) {
       response += `\n${gameName}: ${discordPing()} Auto check-in failed due to CAPTCHA blocking.`;
     } else {
       response += `\n${gameName}: ${isError ? discordPing() : ""}${checkInResult}`;
     }
-  };
+  }
 
   return response;
 }
 
 function postWebhook(data) {
-
   let payload = JSON.stringify({
     'username': 'auto-sign',
     'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
