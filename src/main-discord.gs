@@ -1,6 +1,6 @@
 const profiles = [
   {
-    token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;",
+    token: "ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;",
     genshin: true,
     honkai_star_rail: true,
     honkai_3: false,
@@ -8,9 +8,12 @@ const profiles = [
   }
 ];
 
-const discord_notify = true;
-const myDiscordID = "";
-const discordWebhook = "";
+const discord_notify = true
+const myDiscordID = ""
+const discordWebhook = ""
+
+/** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign for configuration. **/
+/** The following is the script code. Please DO NOT modify. **/
 
 const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481',
@@ -18,9 +21,9 @@ const urlDict = {
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
 };
 
-function main() {
-  const messages = profiles.map(autoSignFunction);
-  const hoyolabResp = messages.join('\n\n');
+async function main() {
+  const messages = await Promise.all(profiles.map(autoSignFunction));
+  const hoyolabResp = `${messages.join('\n\n')}`;
 
   if (discord_notify && discordWebhook) {
     postWebhook(hoyolabResp);

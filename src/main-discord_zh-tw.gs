@@ -1,9 +1,11 @@
 const profiles = [
-  { token: "ltoken=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "你的名子" }
+  {
+    token: "ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    accountName: "你的名子"
+  }
 ];
 
 const discord_notify = true
@@ -17,12 +19,11 @@ const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311',
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111'
-}
+};
 
 async function main() {
-
   const messages = await Promise.all(profiles.map(autoSignFunction));
-  const hoyolabResp = `${messages.join('\n\n')}`
+  const hoyolabResp = `${messages.join('\n\n')}`;
 
   if (discord_notify && discordWebhook) {
     postWebhook(hoyolabResp);
@@ -34,7 +35,6 @@ function discordPing() {
 }
 
 function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
-
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
@@ -64,7 +64,7 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const responseJson = JSON.parse(hoyolabResponse)
+    const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
     const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i]);
     switch (enGameName) {
@@ -80,18 +80,18 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountN
     }
     const isError = checkInResult != "OK";
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
+
     if (bannedCheck) {
       response += `\n${gameName}: ${discordPing()} 自動簽到失敗，受到圖形驗證阻擋。`;
     } else {
       response += `\n${gameName}: ${isError ? discordPing() : ""}${checkInResult}`;
     }
-  };
+  }
 
   return response;
 }
 
 function postWebhook(data) {
-
   let payload = JSON.stringify({
     'username': '自動簽到',
     'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
