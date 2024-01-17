@@ -46,6 +46,8 @@ const profiles = [
 > [!IMPORTANT]
 > HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
 > Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.  
+> For more detail:
+> [https://github.com/Joshua-Noakes1/mei-cards#2-getting-your-hoyolab-cookies](https://github.com/Joshua-Noakes1/mei-cards#2-getting-your-hoyolab-cookies)
 
 <details>
 <summary><b>HoYoLAB settings</b></summary>
