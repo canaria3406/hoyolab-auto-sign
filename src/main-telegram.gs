@@ -1,6 +1,16 @@
+/**--------------------------------------------------------------------------------------------------------------
+IMPORTANT: Cookies Data should not be shared with anyone
+First set environment variables by accessing Project Settings > Script Properties
+Create the following secret properties: 
+  i)token : ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;
+  ii)telegramBotToken : xxxxxxx |help : (https://medium.com/geekculture/generate-telegram-token-for-bot-api-d26faf9bf064) 
+  iii)myTelegramID : 323098397 |help : (https://www.alphr.com/telegram-find-user-id/)
+-----------------------------------------------------------------------------------------------------------------**/
+
+const scriptProperties = PropertiesService.getScriptProperties();
 const profiles = [
   {
-    token: "ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;",
+    token: scriptProperties.getProperty('token'),//
     genshin: true,
     honkai_star_rail: true,
     honkai_3: false,
@@ -9,8 +19,8 @@ const profiles = [
 ];
 
 const telegram_notify = true
-const myTelegramID = "1XXXXXXX0"
-const telegramBotToken = ""
+const myTelegramID = scriptProperties.getProperty('myTelegramID')
+const telegramBotToken = scriptProperties.getProperty('telegramBotToken')
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign/ for configuration. **/
 /** The following is the script code. Please DO NOT modify. **/
@@ -89,5 +99,5 @@ function postWebhook(data) {
     muteHttpExceptions: true
   };
 
-  UrlFetchApp.fetch('https://api.telegram.org/bot' + telegramBotToken + '/sendMessage', options);
+  UrlFetchApp.fetch('https://api.telegram.org/bot' + telegramBotToken + '/sendMessage?', options);
 }
