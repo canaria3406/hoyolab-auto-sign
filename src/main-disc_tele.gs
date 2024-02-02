@@ -1,45 +1,45 @@
-// 使用者資料和 Discord 設定
-// 您可以根據需要更改 'true' 或 'false'
+/** This is an experimental code. **/
+
+// User profiles and Notification settings
 const profiles = [
   {
     token: "account_mid_v2=1l9XXXXXXXXXX; account_id_v2=28XXXXXXX; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXX; ltmid_v2=1lXXXXXXX_XX; ltuid_v2=28XXXXXX;",
     genshin: true,
     honkai_star_rail: true,
-    honkai_3: true,
-    accountName: "您的名字"
+    honkai_3: false,
+    accountName: "YOUR NICKNAME"
   }
 ];
 
 const discord_notify = true;
-const myDiscordID = "";
+const myDiscordID = "1XXXXXXX0";
 const discordWebhook = "";
+
+const telegram_notify = true;
+const myTelegramID = "1XXXXXXX0";
+const telegramBotToken = "";
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign/ for configuration. **/
 /** The following is the script code. Please DO NOT modify. **/
 
-// 不同遊戲的網址
+// URLs for different games
 const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311',
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111'
 };
 
-// 在 Discord 上 ping 使用者的函式
-function discordPing(myDiscordID) {
-  return myDiscordID ? `<@${myDiscordID}> ` : '';
-}
-
-// 為每個使用者資料進行簽到的函式
+// Function to sign in for each user profile
 function autoSignFunction(profile, urlDict) {
-  Logger.log(`開始為 ${profile.accountName} 執行 autoSignFunction`);
+  Logger.log(`Starting autoSignFunction for ${profile.accountName}`);
   const urls = [];
 
   if (profile.genshin) urls.push(urlDict.Genshin);
   if (profile.honkai_star_rail) urls.push(urlDict.Star_Rail);
   if (profile.honkai_3) urls.push(urlDict.Honkai_3);
 
-  // 初始化回應變數
-  let response = `${profile.accountName} 的簽到已完成`;
+  // Initialize response variable
+  let response = `Check-in completed for ${profile.accountName}`;
 
   const options = {
     method: 'POST',
@@ -63,23 +63,22 @@ function autoSignFunction(profile, urlDict) {
     const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
     const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
-    const isError = checkInResult != "OK";
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
 
     if (bannedCheck) {
-      response += `\n${gameName}: ${discordPing(myDiscordID)} 自動簽到因 CAPTCHA 阻擋而失敗。`;
+      response += `\n${gameName}: Auto check-in failed due to CAPTCHA blocking.`;
     } else {
-      response += `\n${gameName}: ${isError ? discordPing(myDiscordID) : ""}${checkInResult}`;
+      response += `\n${gameName}: ${checkInResult}`;
     }
   }
 
-  Logger.log(`為 ${profile.accountName} 完成 autoSignFunction`);
+  Logger.log(`Finished autoSignFunction for ${profile.accountName}`);
   return response;
 }
 
-// 發送訊息到 Discord 的函式
-function postWebhook(data, discordWebhook) {
-  Logger.log('開始執行 postWebhook 函式');
+// Function to send a message to Discord
+function postWebhookDiscord(data) {
+  Logger.log('Starting postWebhook function for Discord');
   let payload = JSON.stringify({
     'username': 'auto-sign',
     'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
@@ -94,12 +93,32 @@ function postWebhook(data, discordWebhook) {
   };
 
   UrlFetchApp.fetch(discordWebhook, options);
-  Logger.log('完成 postWebhook 函式');
+  Logger.log('Finished postWebhook function for Discord');
 }
 
-// 主函式
+// Function to send a message to Telegram
+function postWebhookTelegram(data) {
+  Logger.log('Starting postWebhook function for Telegram');
+  let payload = JSON.stringify({
+    'chat_id': myTelegramID,
+    'text': data,
+    'parse_mode': 'HTML'
+  });
+
+  const options = {
+    method: 'POST',
+    contentType: 'application/json',
+    payload: payload,
+    muteHttpExceptions: true
+  };
+
+  UrlFetchApp.fetch('https://api.telegram.org/bot' + telegramBotToken + '/sendMessage', options);
+  Logger.log('Finished postWebhook function for Telegram');
+}
+
+// Main function
 function main() {
-  Logger.log('開始主函式');
+  Logger.log('Starting main function');
   
   var messages = [];
   for (var i = 0; i < profiles.length; i++) {
@@ -108,9 +127,14 @@ function main() {
   var hoyolabResp = messages.join('\n\n');
 
   if (discord_notify && discordWebhook) {
-    Logger.log('正在發送訊息到 Discord');
-    postWebhook(hoyolabResp, discordWebhook);
+    Logger.log('Sending message to Discord');
+    postWebhookDiscord(hoyolabResp);
+  }
+
+  if (telegram_notify && telegramBotToken && myTelegramID) {
+    Logger.log('Sending message to Telegram');
+    postWebhookTelegram(hoyolabResp);
   }
   
-  Logger.log('完成主函式');
+  Logger.log('Finished main function');
 }

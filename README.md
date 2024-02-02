@@ -13,31 +13,34 @@ A lightweight, secure, and free script that automatically collect HoYoLAB daily 
 Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multiple accounts.
 
 ## Features
-* **Lightweight** - The script only requires minimal configuration and is only 90 lines of code.
+* **Lightweight** - The script only requires minimal configuration and it's only around 110 lines of code.
 * **Secure** - The script can be self-deployed to Google Apps Script, no worries about data leaks.
 * **Free** - Google Apps Script is currently a free service.
 * **Simple** - The script can run without a browser and will automatically notify you through Discord or Telegram.
 
 ## Setup
 1. Go to [Google Apps Script](https://script.google.com/home/start) and create a new project with your custom name.
-2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) ). Refer to the instructions below to configure the config file and save it.
-3. Select "main" and click the "Run" button at the top.  
+2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) / [Experimental](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-disc_tele.gs) ). Refer to the instructions below to configure the config file and save it.
+3. Select "main" and click the "Run" button at the top.
+   ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E04.png)  
    Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
-4. Click the trigger button on the left side and add a new trigger.  
+4. Click the `Trigger` button on the left side / left tab and add a new trigger on `Add Trigger` button at bottom right.  
    Select the function to run: main  
    Select the event source: Time-driven  
    Select the type of time based trigger: Day timer  
-   Select the time of day: recommended to choose any off-peak time between 0900 to 1500.
+   Select the time of day: recommended to choose any off-peak time between 09:00 to 15:00 or 09:00 AM to 03:00 PM.
 
 ## Configuration
 
 ```javascript
 const profiles = [
-  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "YOUR NICKNAME" }
+  {
+    token: "account_mid_v2=1l9XXXXXXXXXX; account_id_v2=28XXXXXXX; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXX; ltmid_v2=1lXXXXXXX_XX; ltuid_v2=28XXXXXX;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: true,
+    accountName: "YOUR NAME"
+  }
 ];
 ```
 
@@ -45,42 +48,25 @@ const profiles = [
 
 > [!IMPORTANT]
 > HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
-> Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.  
-> For more detail:
-> [https://github.com/Joshua-Noakes1/mei-cards#2-getting-your-hoyolab-cookies](https://github.com/Joshua-Noakes1/mei-cards#2-getting-your-hoyolab-cookies)
+> Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.
 
 <details>
-<summary><b>HoYoLAB settings</b></summary>
+<summary><b>HoYoLAB cookie settings</b></summary>
 
-1. **token** - Please enter the token for HoYoLAB check-in page.
-
-   After entering the [HoYoLAB check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
-   ~~Paste the following code and run it to get the token. Copy the token and fill it in "quotes".~~
+   **Follow this Intruction to get tokens**   
    
-   > HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
-   > Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.  
-
-2. **genshin**
-
-   Whether to enable auto check in for Genshin Impact.  
-   If you want, set it to true. If not, please set it to false.  
-   If you do not play Genshin Impact, or your account is not bound to a uid, please set it to false.
-
-3. **honkai_star_rail**
-
-   Whether to enable auto check in for Honkai: Star Rail.  
-   If you want, set it to true. If not, please set it to false.  
-   If you do not play Honkai: Star Rail, or your account is not bound to a uid, please set it to false.
-
-4. **honkai_3**
-
-   Whether to enable auto check in for Honkai Impact 3rd.  
-   If you want, set it to true. If not, please set it to false.  
-   If you do not play Honkai Impact 3rd, or your account is not bound to a uid, please set it to false.
-
-5. **accountName** - Please enter your customized nickname.
-
-   Please enter your customized HoYoLAB or in-game nickname here.
+   1. Go to HoYoLAB (https://www.hoyolab.com/) and log in.
+   2. Go to your profile page.
+   3. Open the developer tools (F12 or Ctrl+Shift+I).
+   4, Go to the "Network" tab.
+   4. Click on the "Preserve Log" / "Persist Logs" button.
+      ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E05.png)  
+   5. Refresh the page.
+   6. Click on the getGameRecordCard request where the method is "GET" (it should be named "getGameRecordCard" with your HoYoLab UID).
+      ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E06.png)  
+   7. Go to the "Cookies" tab.
+   8.  Copy the "account_mid_v2", "account_id_v2", "ltoken_v2", "ltmid_v2", and "ltuid_v2"
+      ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E07.png)  
 
 </details>
 
@@ -150,6 +136,7 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, ping in Discord.
 
 ```javascript
+/** Example **/
 const profiles = [
   { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
@@ -171,12 +158,14 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 Enable Genshin Impact auto check-in on accountA, Honkai Impact 3rd auto check-in on accountB, enable Telegram notify.
 
 ```javascript
+/** Example **/
 const profiles = [
   { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
     genshin: true, 
     honkai_star_rail: false, 
     honkai_3: false, 
     accountName: "accountA" },
+
   { token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
     genshin: false, 
     honkai_star_rail: false, 
@@ -199,3 +188,4 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 2023-05-12 Update get token process[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2).  
 2023-05-12 Add Telegram notify support[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3).  
 2023-05-13 Support multiple HoYoLAB accounts[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
+2024-02-02 Improving in readability, maintainability and adding an experimental version which have discord and telegram notification in 1 code
