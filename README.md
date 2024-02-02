@@ -1,6 +1,6 @@
 <h1 align="center">
-    <img width="120" height="120" src="pic/logo.svg" alt=""><br>
-    hoyolab-auto-sign
+    <img width="150" height="150" src="pic/logo.svg" alt=""><br>
+    Hoyolab-Auto-SignIn
 </h1>
 
 <p align="center">
@@ -22,9 +22,10 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multi
 1. Go to [Google Apps Script](https://script.google.com/home/start) and create a new project with your custom name.
 2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) / [Experimental](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-disc_tele.gs) ). Refer to the instructions below to configure the config file and save it.
 3. Select "main" and click the "Run" button at the top.
-   ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E04.png)  
-   Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
-4. Click the `Trigger` button on the left side / left tab and add a new trigger on `Add Trigger` button at bottom right.  
+   
+   ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E04.png)
+4. Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
+5. Click the `Trigger` button on the left side / left tab and add a new trigger on `Add Trigger` button at bottom right.  
    Select the function to run: main  
    Select the event source: Time-driven  
    Select the type of time based trigger: Day timer  
@@ -48,30 +49,31 @@ const profiles = [
 
 > [!IMPORTANT]
 > HoYoLAB has changed the cookie to HttpOnly cookie. It is no longer possible to read the cookies by using the getToken.js code.  
-> Please use the method of manually copying the cookie to obtain the ltoken_v2 and ltuid_v2.
+> Please use the method of manually copying the cookie to obtain the account_mid_v2, account_id_v2, ltoken_v2, ltmid_v2, and ltuid_v2.
 
 <details>
 <summary><b>HoYoLAB cookie settings</b></summary>
 
-   **Follow this Intruction to get tokens**   
-   
+   **Follow this Intruction to get tokens**      
    1. Go to HoYoLAB (https://www.hoyolab.com/) and log in.
    2. Go to your profile page.
    3. Open the developer tools (F12 or Ctrl+Shift+I).
    4, Go to the "Network" tab.
    4. Click on the "Preserve Log" / "Persist Logs" button.
+      
       ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E05.png)  
-   5. Refresh the page.
-   6. Click on the getGameRecordCard request where the method is "GET" (it should be named "getGameRecordCard" with your HoYoLab UID).
+   6. Refresh the page.
+   7. Click on the getGameRecordCard request where the method is "GET" (it should be named "getGameRecordCard" with your HoYoLab UID).
+      
       ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E06.png)  
-   7. Go to the "Cookies" tab.
-   8.  Copy the "account_mid_v2", "account_id_v2", "ltoken_v2", "ltmid_v2", and "ltuid_v2"
+   8. Go to the "Cookies" tab.
+   9.  Copy the "account_mid_v2", "account_id_v2", "ltoken_v2", "ltmid_v2", and "ltuid_v2"
       ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E07.png)  
 
 </details>
 
 <details>
-<summary><b>discord notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs">Discord version</a>)</b></summary>
+<summary><b>Discord notification settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs">Discord version</a>)</b></summary>
 
 ```javascript
 const discord_notify = true
@@ -100,7 +102,7 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 </details>
 
 <details>
-<summary><b>telegram notify settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs">Telegram version</a>)</b></summary>
+<summary><b>Telegram notification settings (only for <a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs">Telegram version</a>)</b></summary>
 
 ```javascript
 const telegram_notify = true
@@ -182,10 +184,10 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Changelog
-2022-12-30 Project launched.  
-2023-04-27 Add support for Honkai Impact 3rd, and Honkai: Star Rail.  
-2023-04-27 Add switch for Discord notify.  
-2023-05-12 Update get token process[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2).  
-2023-05-12 Add Telegram notify support[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3).  
-2023-05-13 Support multiple HoYoLAB accounts[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
-2024-02-02 Improving in readability, maintainability and adding an experimental version which have discord and telegram notification in 1 code
+- 2022-12-30: Project launched.
+- 2023-04-27: Added support for Honkai Impact 3rd, and Honkai: Star Rail.
+- 2023-04-27: Added switch for Discord notify.
+- 2023-05-12: Updated get token process ([#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2)).
+- 2023-05-12: Added Telegram notify support ([#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3)).
+- 2023-05-13: Added support for multiple HoYoLAB accounts ([#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)).
+- 2024-02-02: Improved readability, maintainability and added an experimental version which have discord and telegram notification in 1 code.
