@@ -20,7 +20,7 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail. Support multi
 
 ## Setup
 1. Go to [Google Apps Script](https://script.google.com/home/start) and create a new project with your custom name.
-2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) / [Experimental](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-disc_tele.gs) ). Refer to the instructions below to configure the config file and save it.
+2. Select the editor and paste the code( [Discord version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord.gs) / [Telegram version](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram.gs) / [Experimental](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/src/main-disc_tele.gs) ). Refer to the instructions below to configure the config file and save it.
 3. Select "main" and click the "Run" button at the top.
    
    ![image](https://github.com/NatsumeAoii/hoyolab-auto-sign/blob/main/pic/E04.png)
