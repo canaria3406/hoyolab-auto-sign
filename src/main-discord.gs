@@ -1,3 +1,4 @@
+/** ================================================================================================================================= **/
 // User profiles and Discord settings
 // You can change from 'true' or 'false' depends what you need
 const profiles = [
@@ -15,6 +16,7 @@ const myDiscordID = "";
 const discordWebhook = "";
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign/ for configuration. **/
+/** ================================================================================================================================= **/
 /** The following is the script code. Please DO NOT modify. **/
 
 // URLs for different games
@@ -25,12 +27,10 @@ const urlDict = {
 };
 
 // Function to ping a user on Discord
-function discordPing(myDiscordID) {
-  return myDiscordID ? `<@${myDiscordID}> ` : '';
-}
+const discordPing = (myDiscordID) => myDiscordID ? `<@${myDiscordID}> ` : '';
 
 // Function to sign in for each user profile
-function autoSignFunction(profile, urlDict) {
+const autoSignFunction = (profile, urlDict) => {
   Logger.log(`Starting autoSignFunction for ${profile.accountName}`);
   const urls = [];
 
@@ -39,7 +39,7 @@ function autoSignFunction(profile, urlDict) {
   if (profile.honkai_3) urls.push(urlDict.Honkai_3);
 
   // Initialize response variable
-  let response = `Check-in completed for ${profile.accountName}`;
+  let response = `Check-in success for ${profile.accountName}`;
 
   const options = {
     method: 'POST',
@@ -60,16 +60,20 @@ function autoSignFunction(profile, urlDict) {
   const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
-    const responseJson = JSON.parse(hoyolabResponse);
-    const checkInResult = responseJson.message;
-    const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
-    const isError = checkInResult != "OK";
-    const bannedCheck = responseJson.data?.gt_result?.is_risk;
+    try {
+      const responseJson = JSON.parse(hoyolabResponse);
+      const checkInResult = responseJson.message;
+      const gameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i])?.replace(/_/g, ' ');
+      const isError = checkInResult != "Success!";
+      const bannedCheck = responseJson.data?.gt_result?.is_risk;
 
-    if (bannedCheck) {
-      response += `\n${gameName}: ${discordPing(myDiscordID)} Auto check-in failed due to CAPTCHA blocking.`;
-    } else {
-      response += `\n${gameName}: ${isError ? discordPing(myDiscordID) : ""}${checkInResult}`;
+      if (bannedCheck) {
+        response += `\n${gameName}: ${discordPing(myDiscordID)} Auto check-in failed due to CAPTCHA blocking.`;
+      } else {
+        response += `\n${gameName}: ${isError ? discordPing(myDiscordID) : ""}${checkInResult}`;
+      }
+    } catch (error) {
+      Logger.log(`Error parsing response for ${gameName}: ${error}`);
     }
   }
 
@@ -78,10 +82,10 @@ function autoSignFunction(profile, urlDict) {
 }
 
 // Function to send a message to Discord
-function postWebhook(data, discordWebhook) {
+const postWebhook = (data, discordWebhook) => {
   Logger.log('Starting postWebhook function');
   let payload = JSON.stringify({
-    'username': 'auto-sign',
+    'username': 'Hoyolab-AutoSign-in',
     'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
     'content': data
   });
@@ -98,14 +102,11 @@ function postWebhook(data, discordWebhook) {
 }
 
 // Main function
-function main() {
+const main = () => {
   Logger.log('Starting main function');
   
-  var messages = [];
-  for (var i = 0; i < profiles.length; i++) {
-    messages.push(autoSignFunction(profiles[i], urlDict));
-  }
-  var hoyolabResp = messages.join('\n\n');
+  const messages = profiles.map(profile => autoSignFunction(profile, urlDict));
+  const hoyolabResp = messages.join('\n\n');
 
   if (discord_notify && discordWebhook) {
     Logger.log('Sending message to Discord');
