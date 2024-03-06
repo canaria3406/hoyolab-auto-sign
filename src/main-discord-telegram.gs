@@ -17,6 +17,11 @@ const notificationConfig = {
     discord: {
         notify: true,
         webhook: "XXXXXX"
+    },
+    telegram: {
+        notify: true,
+        botToken: "XXXXXX",
+        chatID: "XXXXX"
     }
 };
 
@@ -51,7 +56,7 @@ const fetchUrls = async (urls, token) => {
     }
 };
 
-// Function to notify Discord
+// Function to notify Discord or Telegram
 const notify = async (message) => {
     if (notificationConfig.discord.notify && notificationConfig.discord.webhook) {
         const discordPayload = JSON.stringify({ 'username': 'Hoyolab-AutoCheck-In', 'avatar_url': 'https://i.imgur.com/LI1D4hP.png', 'content': message });
@@ -65,6 +70,20 @@ const notify = async (message) => {
         }
     } else {
         log(`Discord notification not sent: Configuration missing or disabled`);
+    }
+    
+    if (notificationConfig.telegram.notify && notificationConfig.telegram.botToken && notificationConfig.telegram.chatID) {
+        const telegramPayload = JSON.stringify({ chat_id: notificationConfig.telegram.chatID, text: message, parse_mode: 'HTML' });
+        const telegramOptions = { method: 'POST', contentType: 'application/json', payload: telegramPayload, muteHttpExceptions: true };
+
+        try {
+            await UrlFetchApp.fetch(`https://api.telegram.org/bot${notificationConfig.telegram.botToken}/sendMessage`, telegramOptions);
+            log(`Telegram notification sent`);
+        } catch (error) {
+            log(`Error sending message to Telegram: ${error}`);
+        }
+    } else {
+        log(`Telegram notification not sent: Configuration missing or disabled`);
     }
 };
 
