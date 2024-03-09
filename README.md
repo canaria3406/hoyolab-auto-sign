@@ -161,3 +161,7 @@ To manually acquire your HoYoLAB cookies, follow these steps:
 - **2023-05-12:** Updated token acquisition process and added Telegram notification support.
 - **2024-02-02:** Improved readability and maintainability. Added an experimental version with both Discord and Telegram notifications.
 - **2024-03-09:** Improved overall logic and notification config
+
+## Other Documentation
+- [Contributing](/CONTRIBUTING.md)
+- [Changelog](/CHANGELOG.md)
