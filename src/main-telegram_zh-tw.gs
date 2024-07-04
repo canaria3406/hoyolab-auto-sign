@@ -4,6 +4,7 @@ const profiles = [
     genshin: true,
     honkai_star_rail: true,
     honkai_3: false,
+    zzz: true,
     accountName: "你的名子"
   }
 ];
@@ -18,7 +19,8 @@ const telegramBotToken = ""
 const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311',
-  Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111'
+  Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111',
+  Zzz: 'https://sg-act-nap-api.hoyolab.com/event/luna/zzz/os/sign?lang=us-id&act_id=e202406031448091'
 };
 
 async function main(){
@@ -30,12 +32,13 @@ async function main(){
   }
 }
 
-function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, accountName }) {
+function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, zzz, accountName }) {
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
   if (honkai_star_rail) urls.push(urlDict.Star_Rail);
   if (honkai_3) urls.push(urlDict.Honkai_3);
+  if (zzz) urls.push(urlDict.Zzz);
 
   const header = {
     Cookie: token,
