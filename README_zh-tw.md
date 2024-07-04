@@ -32,11 +32,14 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 
 ```javascript
 const profiles = [
-  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "你的名子" }
+  {
+    token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    tears_of_themis: false,
+    accountName: "你的名字"
+  }
 ];
 ```
 
@@ -144,11 +147,14 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "胡桃" }
+  {
+    token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    tears_of_themis: false,
+    accountName: "胡桃"
+  }
 ];
 
 const discord_notify = true
@@ -165,16 +171,22 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: false, 
-    honkai_3: false, 
-    accountName: "帳號A" },
-  { token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
-    genshin: false, 
-    honkai_star_rail: false, 
-    honkai_3: true, 
-    accountName: "帳號B" }
+  {
+    token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
+    genshin: true,
+    honkai_star_rail: false,
+    honkai_3: false,
+    tears_of_themis: false,
+    accountName: "帳號A"
+  },
+  {
+    token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
+    genshin: false,
+    honkai_star_rail: false,
+    honkai_3: true,
+    tears_of_themis: false,
+    accountName: "帳號B"
+  }
 ];
 
 const telegram_notify = true
