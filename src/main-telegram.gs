@@ -32,7 +32,7 @@ async function main(){
   }
 }
 
-function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, tears_of_themis, accountName }) {
+function autoSignFunction({ token, genshin = false, honkai_star_rail = false, honkai_3 = false, tears_of_themis = false, accountName }) {
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
@@ -60,7 +60,13 @@ function autoSignFunction({ token, genshin, honkai_star_rail, honkai_3, tears_of
 
   let response = `Check-in completed for ${accountName}`;
 
-  const httpResponses = UrlFetchApp.fetchAll(urls.map(url => ({ url, ...options })));
+  var sleepTime = 0
+  const httpResponses = []
+  for (const url of urls) {
+    Utilities.sleep(sleepTime);
+    httpResponses.push(UrlFetchApp.fetch(url, options));
+    sleepTime = 1000;
+  }
 
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
     const responseJson = JSON.parse(hoyolabResponse);
