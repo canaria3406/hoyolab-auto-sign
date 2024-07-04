@@ -39,6 +39,7 @@ const profiles = [
     honkai_star_rail: true,
     honkai_3: false,
     tears_of_themis: false,
+    zenless_zone_zero: false,
     accountName: "YOUR NICKNAME"
   }
 ];

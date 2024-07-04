@@ -5,6 +5,7 @@ const profiles = [
     honkai_star_rail: true,
     honkai_3: false,
     tears_of_themis: false,
+    zenless_zone_zero: false,
     accountName: "你的名字"
   }
 ];
@@ -20,7 +21,8 @@ const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=zh-tw&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202303301540311',
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=zh-tw&act_id=e202110291205111',
-  Tears_of_Themis: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202308141137581'
+  Tears_of_Themis: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=zh-tw&act_id=e202308141137581',
+  Zenless_Zone_Zero: 'https://sg-act-nap-api.hoyolab.com/event/luna/zzz/os/sign?lang=zh-tw&act_id=e202406031448091'
 };
 
 async function main() {
@@ -36,13 +38,22 @@ function discordPing() {
   return myDiscordID ? `<@${myDiscordID}> ` : '';
 }
 
-function autoSignFunction({ token, genshin = false, honkai_star_rail = false, honkai_3 = false, tears_of_themis = false, accountName }) {
+function autoSignFunction({
+  token,
+  genshin = false,
+  honkai_star_rail = false,
+  honkai_3 = false,
+  tears_of_themis = false,
+  zenless_zone_zero = false,
+  accountName
+}) {
   const urls = [];
 
   if (genshin) urls.push(urlDict.Genshin);
   if (honkai_star_rail) urls.push(urlDict.Star_Rail);
   if (honkai_3) urls.push(urlDict.Honkai_3);
   if (tears_of_themis) urls.push(urlDict.Tears_of_Themis);
+  if (zenless_zone_zero) urls.push(urlDict.Zenless_Zone_Zero);
 
   const header = {
     Cookie: token,
@@ -88,6 +99,9 @@ function autoSignFunction({ token, genshin = false, honkai_star_rail = false, ho
       break;
       case 'Tears_of_Themis':
       gameName = '未定事件簿';
+      break;
+      case 'Zenless_Zone_Zero':
+      gameName = '絕區零';
       break;
     }
     const isError = checkInResult != "OK";
