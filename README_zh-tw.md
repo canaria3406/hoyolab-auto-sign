@@ -4,13 +4,13 @@
 </h1>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square">
-    <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square">
+    <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign?style=flat-square" alt="">
+    <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign?style=flat-square" alt="">
     <br><b>繁體中文</b>　<a href="/README.md">English</a>　<a href="/README_ru-ru.md">Русский</a>
 </p>
 
-hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。  
-支援 原神、崩壞：星穹鐵道、崩壞3rd。支援多帳號。
+hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
+支援 原神、崩壞：星穹鐵道、崩壞3rd、未定事件簿、絕區零。支援多帳號。
 
 ## 特色
 * **輕巧** - 僅需少量的設定即可運作，程式碼僅90行
@@ -22,57 +22,71 @@ hoyolab自動簽到script，每月約可自動領取60石，堪比蚊子腿。
 1. 進入[Google Apps Script](https://script.google.com/home/start)，新增專案，名稱可自訂。
 2. 選擇編輯器，貼上程式碼( [Discord版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-discord_zh-tw.gs) / [Telegram版](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main-telegram_zh-tw.gs) )，並參考下述說明配置config檔，完成後儲存。
 3. 在上方選擇main、點選上方的[**執行**]，並授予權限，確認配置是否正確(開始執行>執行完畢)。
-4. 在左側選擇觸發條件，新增觸發條件  
-   選擇您要執行的功能: main  
-   選取活動來源: 時間驅動  
-   選取時間型觸發條件類型: 日計時器  
+4. 在左側選擇觸發條件，新增觸發條件
+   選擇您要執行的功能: main
+   選取活動來源: 時間驅動
+   選取時間型觸發條件類型: 日計時器
    選取時段: 自行選擇，建議選擇0900~1500之離峰任意時段
 
 ## config檔設定
 
 ```javascript
 const profiles = [
-  { token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "你的名子" }
+  {
+    token: "ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    honkai_3: false,
+    tears_of_themis: false,
+    zenless_zone_zero: false,
+    accountName: "你的名字"
+  }
 ];
 ```
 
-> Hoyolab在2023年7月更改了token的規則，從以往的"ltoken"和"ltuid"更改成"ltoken_v2"和"ltuid_v2"。  
+> Hoyolab在2023年7月更改了token的規則，從以往的"ltoken"和"ltuid"更改成"ltoken_v2"和"ltuid_v2"。
 
 > [!IMPORTANT]
-> HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。  
-> 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。  
+> HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。
+> 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。
 
 <details>
 <summary><b>hoyolab 設定</b></summary>
 
 1. **token** - 請填入hoyolab簽到頁面的token
 
-   進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，  
+   進入[hoyolab簽到頁面](https://www.hoyolab.com/circles)後，按F12進入console，
    ~~貼上以下程式碼後執行即可取得token，請注意token包含分號;，須一併複製並貼入"括號內"~~
 
-   > HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。  
-   > 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。  
+   > HoYoLAB 已將 cookie 變更為 HttpOnly cookie。未來將無法再使用 getToken.js 讀取 cookie。
+   > 請改用手動方式複製cookie，以取得ltoken_v2和ltuid_v2。
 
 2. **genshin**
 
-   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false。
+   是否要進行 **原神** 的自動簽到。若要進行自動簽到則為true，若不要請填入false，或刪除此行。
+   若您沒有遊玩**原神**，或帳號未綁定uid，請填寫false，或刪除此行。
 
 3. **honkai_star_rail**
 
-   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false。
+   是否要進行 **崩壞：星穹鐵道** 的自動簽到。若要進行自動簽到則為true，若不要請填入false，或刪除此行。
+   若您沒有遊玩**崩壞：星穹鐵道**，或帳號未綁定uid，請填寫false，或刪除此行。
 
 4. **honkai_3**
 
-   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false。  
-   若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false。
+   是否要進行 **崩壞3rd** 的自動簽到。若要進行自動簽到則為true，若不要請填入false，或刪除此行。
+   若您沒有遊玩**崩壞3rd**，或帳號未綁定uid，請填寫false，或刪除此行。
 
-5. **accountName** - 請輸入你的暱稱
+5. **tears_of_themis**
+
+   是否要進行 **未定事件簿** 的自動簽到。若要進行自動簽到則為true，若不要請填入false，或刪除此行。
+   若您沒有遊玩**未定事件簿**，或帳號未綁定uid，請填寫false，或刪除此行。
+
+6. **zenless_zone_zero**
+
+   是否要進行 **絕區零** 的自動簽到。若要進行自動簽到則為true，若不要請填入false，或刪除此行。
+   若您沒有遊玩**絕區零**，或帳號未綁定uid，請填寫false，或刪除此行。
+
+7. **accountName** - 請輸入你的暱稱
 
    請輸入你的Hoyolab暱稱或遊戲內暱稱，供通知使用。
 
@@ -89,20 +103,20 @@ const discordWebhook = "https://discord.com/api/webhooks/1050000000000000060/6aX
 
 1. **discord_notify**
 
-   是否要進行Discord的自動簽到通知。  
+   是否要進行Discord的自動簽到通知。
    若要進行自動簽到通知則為true，若不要請填入false。
 
 2. **myDiscordID** - 請填入自己的 Discord ID
 
-   如果希望在執行失敗時被tag，請填入自己的 Discord ID。  
-   你的 Discord ID 看起來會像`23456789012345678`，複製ID並填入"括號內"即可。  
-   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。  
+   如果希望在執行失敗時被tag，請填入自己的 Discord ID。
+   你的 Discord ID 看起來會像`23456789012345678`，複製ID並填入"括號內"即可。
+   Discord ID 取得方法可參考[此篇文章](https://www.tech-girlz.com/2022/02/discord-user-id-user-link.html)。
    若您不希望被tag，請讓"括號內"保持空白。
-   
+
 3. **discordWebhook** - 請填入發送通知的伺服器頻道之 Discord Webhook
 
-   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)。  
-   當你建立 Discord Webhook 後，您會取得 Discord Webhook 網址，看起來會像`https://discord.com/api/webhooks/1234567890987654321/PekopekoPekopekoPekopeko06f810494a4dbf07b726924a5f60659f09edcaa1`。  
+   Discord Webhook 建立方式可參考[此篇文章](https://help.tumblr.com/hc/zh-hk/articles/4421081082775-Discord-Webhook)。
+   當你建立 Discord Webhook 後，您會取得 Discord Webhook 網址，看起來會像`https://discord.com/api/webhooks/1234567890987654321/PekopekoPekopekoPekopeko06f810494a4dbf07b726924a5f60659f09edcaa1`。
    複製 Webhook 網址 並填入"括號內"即可。
 
 </details>
@@ -122,21 +136,21 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 2. **myTelegramID** - 請填入您的 Telegram ID.
 
-   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，  
+   向 [@IDBot](https://t.me/myidbot) 傳送 `/getid` 指令以取得您的 Telegram ID，
    你的 Telegram ID 看起來會像`123456780`，複製並填入"括號內"即可。
 
 3. **telegramBotToken** - 請填入您的 Telegram Bot Token.
 
-   向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。  
-   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。  
-   複製Token並填入"括號內"即可。  
+   向 [@BotFather](https://t.me/botfather) 傳送 `/newbot` 指令以建立新的 Telegram Bot。
+   當你建立 Telegram Bot 後，您會取得 Telegram Bot Token，看起來會像`110201543:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw`。
+   複製Token並填入"括號內"即可。
    你可以參考[此篇文章](https://core.telegram.org/bots/features#botfather)以獲得更詳細的說明。
 
 </details>
 
 ## Demo
-若自動簽到完成，則傳送 OK  
-若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~  
+若自動簽到完成，則傳送 OK
+若今天已簽到過，則傳送 旅行者/開拓者/艦長，你已經簽到過了~
 
 <details>
 <summary><b>範例 單帳號自動簽到、進行 Discord 通知、進行 Discord tag</b></summary>
@@ -144,11 +158,12 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: true, 
-    honkai_3: false, 
-    accountName: "胡桃" }
+  {
+    token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    honkai_star_rail: true,
+    accountName: "胡桃"
+  }
 ];
 
 const discord_notify = true
@@ -165,16 +180,16 @@ const discordWebhook = "https://discord.com/api/webhooks/10xxxxxxxxxxxxxxx60/6aX
 
 ```javascript
 const profiles = [
-  { token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;", 
-    genshin: true, 
-    honkai_star_rail: false, 
-    honkai_3: false, 
-    accountName: "帳號A" },
-  { token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;", 
-    genshin: false, 
-    honkai_star_rail: false, 
-    honkai_3: true, 
-    accountName: "帳號B" }
+  {
+    token: "account_mid_v2=123xyzabcd_hi; account_id_v2=26XXXXX20; ltoken_v2=v2_CANARIAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3406; ltmid_v2=123xyzabcd_hi; ltuid_v2=26XXXXX20;",
+    genshin: true,
+    accountName: "帳號A"
+  },
+  {
+    token: "account_mid_v2=456qwertyu_hi; account_id_v2=28XXXXX42; ltoken_v2=v2_GENSHINXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX5566; ltmid_v2=456qwertyu_hi; ltuid_v2=28XXXXX42;",
+    honkai_3: true,
+    accountName: "帳號B"
+  }
 ];
 
 const telegram_notify = true
@@ -186,9 +201,9 @@ const telegramBotToken = "6XXXXXXXXX:AAAAAAAAAAXXXXXXXXXX8888888888Peko"
 </details>
 
 ## Changelog
-2022-12-30 專案公開  
-2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援  
-2023-04-27 新增 Discord 通知開關  
-2023-05-12 更新 getToken 函式[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2)  
-2023-05-12 新增 Telegram 版本[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3)  
+2022-12-30 專案公開
+2023-04-27 新增 崩壞：星穹鐵道、崩壞3rd 支援
+2023-04-27 新增 Discord 通知開關
+2023-05-12 更新 getToken 函式[#2](https://github.com/canaria3406/hoyolab-auto-sign/pull/2)
+2023-05-12 新增 Telegram 版本[#3](https://github.com/canaria3406/hoyolab-auto-sign/pull/3)
 2023-05-13 支援多帳號[#4](https://github.com/canaria3406/hoyolab-auto-sign/pull/4)
