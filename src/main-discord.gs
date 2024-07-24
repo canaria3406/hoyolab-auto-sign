@@ -1,18 +1,18 @@
 const profiles = [
   {
-    token: "ltoken_v2=gBxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxCY; ltuid_v2=26XXXXX20;",
-    genshin: true,
-    honkai_star_rail: true,
+    token: "ltoken_v2=v2_######; ltuid_v2=42######;",
+    genshin: false,
+    honkai_star_rail: false,
     honkai_3: false,
     tears_of_themis: false,
-    zenless_zone_zero: false,
-    accountName: "YOUR NICKNAME"
-  }
+    zenless_zone_zero: true,
+    discordID: "23######",
+  },
+  
 ];
 
 const discord_notify = true
-const myDiscordID = ""
-const discordWebhook = ""
+const discordWebhook = "https://discord.com/api/webhooks/###/######"
 
 /** The above is the config. Please refer to the instructions on https://github.com/canaria3406/hoyolab-auto-sign for configuration. **/
 /** The following is the script code. Please DO NOT modify. **/
@@ -34,8 +34,8 @@ async function main() {
   }
 }
 
-function discordPing() {
-  return myDiscordID ? `<@${myDiscordID}> ` : '';
+function discordPing(id) {
+  return id ? `<@${id}> ` : '';
 }
 
 function autoSignFunction({
@@ -45,7 +45,7 @@ function autoSignFunction({
   honkai_3 = false,
   tears_of_themis = false,
   zenless_zone_zero = false,
-  accountName
+  discordID
 }) {
   const urls = [];
 
@@ -73,7 +73,7 @@ function autoSignFunction({
     muteHttpExceptions: true,
   };
 
-  let response = `Check-in completed for ${accountName}`;
+  let response = `Check-in completed for ${discordPing(discordID)}`;
 
   var sleepTime = 0
   const httpResponses = []
@@ -91,9 +91,9 @@ function autoSignFunction({
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
 
     if (bannedCheck) {
-      response += `\n${gameName}: ${discordPing()} Auto check-in failed due to CAPTCHA blocking.`;
+      response += `\n${gameName}: Auto check-in failed due to CAPTCHA blocking.`;
     } else {
-      response += `\n${gameName}: ${isError ? discordPing() : ""}${checkInResult}`;
+      response += `\n${gameName}: ${checkInResult}`;
     }
   }
 
@@ -102,8 +102,8 @@ function autoSignFunction({
 
 function postWebhook(data) {
   let payload = JSON.stringify({
-    'username': 'auto-sign',
-    'avatar_url': 'https://i.imgur.com/LI1D4hP.png',
+    'username': 'Butlerboo',
+    'avatar_url': 'https://i.imgur.com/SVowWyB.png',
     'content': data
   });
 
