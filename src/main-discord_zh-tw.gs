@@ -104,7 +104,7 @@ function autoSignFunction({
   for (const [i, hoyolabResponse] of httpResponses.entries()) {
     const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
-    const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urlsnheaders[i].url)?.replace(/_/g, ' ');
+    const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urlsnheaders[i].url)
     switch (enGameName) {
       case 'Genshin':
       gameName = '原神';
