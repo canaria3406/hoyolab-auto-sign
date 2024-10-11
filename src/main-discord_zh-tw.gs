@@ -55,29 +55,33 @@ function autoSignFunction({
   if (tears_of_themis) urls.push(urlDict.Tears_of_Themis);
   if (zenless_zone_zero) urls.push(urlDict.Zenless_Zone_Zero);
 
-  const header = {
-    Cookie: token,
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'x-rpc-app_version': '2.34.1',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-    'x-rpc-client_type': '4',
-    'Referer': 'https://act.hoyolab.com/',
-    'Origin': 'https://act.hoyolab.com'
-  };
-
-  const options = {
-    method: 'POST',
-    headers: header,
-    muteHttpExceptions: true,
-  };
-
   let response = `${accountName} 的自動簽到作業已完成`;
 
-  var sleepTime = 0
-  const httpResponses = []
+  var sleepTime = 0;
+  const httpResponses = [];
   for (const url of urls) {
+    // Determine whether the URL is for "Zenless_Zone_Zero" and set headers accordingly
+    const isZenless = url === urlDict.Zenless_Zone_Zero;
+    
+    const header = {
+      Cookie: token,
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'x-rpc-app_version': '2.34.1',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+      'x-rpc-client_type': '4',
+      'Referer': 'https://act.hoyolab.com/',
+      'Origin': 'https://act.hoyolab.com',
+      ...(isZenless && { 'x-rpc-signgame': 'zzz' })  // Add extra header for Zenless_Zone_Zero
+    };
+
+    const options = {
+      method: 'POST',
+      headers: header,
+      muteHttpExceptions: true,
+    };
+
     Utilities.sleep(sleepTime);
     httpResponses.push(UrlFetchApp.fetch(url, options));
     sleepTime = 1000;
@@ -87,22 +91,23 @@ function autoSignFunction({
     const responseJson = JSON.parse(hoyolabResponse);
     const checkInResult = responseJson.message;
     const enGameName = Object.keys(urlDict).find(key => urlDict[key] === urls[i]);
+    let gameName;
     switch (enGameName) {
       case 'Genshin':
-      gameName = '原神';
-      break;
+        gameName = '原神';
+        break;
       case 'Star_Rail':
-      gameName = '星穹鐵道';
-      break;
+        gameName = '星穹鐵道';
+        break;
       case 'Honkai_3':
-      gameName = '崩壞3rd';
-      break;
+        gameName = '崩壞3rd';
+        break;
       case 'Tears_of_Themis':
-      gameName = '未定事件簿';
-      break;
+        gameName = '未定事件簿';
+        break;
       case 'Zenless_Zone_Zero':
-      gameName = '絕區零';
-      break;
+        gameName = '絕區零';
+        break;
     }
     const isError = checkInResult != "OK";
     const bannedCheck = responseJson.data?.gt_result?.is_risk;
@@ -116,6 +121,7 @@ function autoSignFunction({
 
   return response;
 }
+
 
 function postWebhook(data) {
   let payload = JSON.stringify({
