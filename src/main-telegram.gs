@@ -51,29 +51,33 @@ function autoSignFunction({
   if (tears_of_themis) urls.push(urlDict.Tears_of_Themis);
   if (zenless_zone_zero) urls.push(urlDict.Zenless_Zone_Zero);
 
-  const header = {
-    Cookie: token,
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'x-rpc-app_version': '2.34.1',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-    'x-rpc-client_type': '4',
-    'Referer': 'https://act.hoyolab.com/',
-    'Origin': 'https://act.hoyolab.com'
-  };
-
-  const options = {
-    method: 'POST',
-    headers: header,
-    muteHttpExceptions: true,
-  };
-
   let response = `Check-in completed for ${accountName}`;
+  let sleepTime = 0;
+  const httpResponses = [];
 
-  var sleepTime = 0
-  const httpResponses = []
   for (const url of urls) {
+    // Determine whether the URL is for "Zenless_Zone_Zero" and set headers accordingly
+    const isZenless = url === urlDict.Zenless_Zone_Zero;
+    
+    const header = {
+      Cookie: token,
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'x-rpc-app_version': '2.34.1',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+      'x-rpc-client_type': '4',
+      'Referer': 'https://act.hoyolab.com/',
+      'Origin': 'https://act.hoyolab.com',
+      ...(isZenless && { 'x-rpc-signgame': 'zzz' })  // Add extra header for Zenless_Zone_Zero
+    };
+
+    const options = {
+      method: 'POST',
+      headers: header,
+      muteHttpExceptions: true,
+    };
+
     Utilities.sleep(sleepTime);
     httpResponses.push(UrlFetchApp.fetch(url, options));
     sleepTime = 1000;
