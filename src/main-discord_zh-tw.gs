@@ -78,6 +78,14 @@ function autoSignFunction({
   var sleepTime = 0
   const httpResponses = []
   for (const url of urls) {
+    if (url === urlDict.Zenless_Zone_Zero) {
+      header['X-Rpc-Signgame'] = 'zzz';
+    }
+    
+    if (url === urlDict.Star_Rail) {
+      header['X-Rpc-Signgame'] = 'hkrpg';
+    }
+
     Utilities.sleep(sleepTime);
     httpResponses.push(UrlFetchApp.fetch(url, options));
     sleepTime = 1000;
