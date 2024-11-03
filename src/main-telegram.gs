@@ -21,7 +21,7 @@ const urlDict = {
   Genshin: 'https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481',
   Star_Rail: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311',
   Honkai_3: 'https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111',
-  Tears_of_Themis: 'https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202308141137581',
+  Tears_of_Themis: 'https://sg-public-api.hoyolab.com/event/luna/nxx/os/sign?lang=en-us&act_id=e202202281857121',
   Zenless_Zone_Zero: 'https://sg-act-nap-api.hoyolab.com/event/luna/zzz/os/sign?lang=en-us&act_id=e202406031448091'
 };
 
@@ -51,29 +51,35 @@ function autoSignFunction({
   if (tears_of_themis) urls.push(urlDict.Tears_of_Themis);
   if (zenless_zone_zero) urls.push(urlDict.Zenless_Zone_Zero);
 
-  const header = {
-    Cookie: token,
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'x-rpc-app_version': '2.34.1',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-    'x-rpc-client_type': '4',
-    'Referer': 'https://act.hoyolab.com/',
-    'Origin': 'https://act.hoyolab.com'
-  };
-
-  const options = {
-    method: 'POST',
-    headers: header,
-    muteHttpExceptions: true,
-  };
-
   let response = `Check-in completed for ${accountName}`;
+  let sleepTime = 0;
+  const httpResponses = [];
 
-  var sleepTime = 0
-  const httpResponses = []
   for (const url of urls) {
+    // Determine whether the URL is for "Zenless_Zone_Zero" and set headers accordingly
+    const isZenless = url === urlDict.Zenless_Zone_Zero;
+    const isTears_of_themis = url === urlDict.Tears_of_Themis;
+    
+    const header = {
+      Cookie: token,
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'x-rpc-app_version': '2.34.1',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+      'x-rpc-client_type': '4',
+      'Referer': 'https://act.hoyolab.com/',
+      'Origin': 'https://act.hoyolab.com',
+      ...(isZenless && { 'x-rpc-signgame': 'zzz' }),
+      ...(isTears_of_themis && { 'x-rpc-signgame': 'nxx' })
+    };
+
+    const options = {
+      method: 'POST',
+      headers: header,
+      muteHttpExceptions: true,
+    };
+
     Utilities.sleep(sleepTime);
     httpResponses.push(UrlFetchApp.fetch(url, options));
     sleepTime = 1000;
